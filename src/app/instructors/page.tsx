@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { Card } from "@/components/ui/card";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/navbar";
 import { GraduationCap, Users, Clock } from "lucide-react";
@@ -32,8 +31,6 @@ export default function InstructorsPage() {
 
   return (
     <>
-      <Navbar />
-
       <section className="py-16 bg-white border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-12">
