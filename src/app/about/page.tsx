@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/navbar";
 import { BookOpen, Building2, GraduationCap, Users, ShieldCheck } from "lucide-react";
@@ -30,8 +29,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <Navbar />
-
       <section className="py-16 bg-brand-navy">
         <div className="mx-auto max-w-7xl px-6 text-center">
           <span className="inline-block mb-4 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1 text-xs font-heading font-bold text-brand-orange tracking-wider">
