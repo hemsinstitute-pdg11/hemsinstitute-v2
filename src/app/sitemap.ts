@@ -58,6 +58,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  // During build or environments without database configuration, publish
+  // the stable static routes instead of failing metadata collection.
+  if (!process.env.DATABASE_URL) {
+    return staticRoutes;
+  }
+
   try {
     const allPrograms = await db
       .select({ slug: programs.slug, updatedAt: programs.createdAt })

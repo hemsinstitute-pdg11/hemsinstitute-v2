@@ -83,3 +83,34 @@ psql "$DATABASE_URL" -f scripts/seed.sql
 - The admin dashboard is intentionally not included in Phase 1.
 - Program data is managed in the database; update prices/schedules via SQL or
   the future admin dashboard.
+
+
+## Build-time database configuration
+
+`npm run build` no longer requires `DATABASE_URL` just to import route modules or collect `/sitemap.xml`. Database-backed features still require a valid PostgreSQL `DATABASE_URL` in the hosting environment at runtime. Configure it before enabling program catalog, registration, schedules, and database health checks.
+
+
+## Supabase PostgreSQL setup (V2)
+
+The V2 database is provisioned in the Hem's Supabase organization as a separate, empty project so it does not overwrite the original Hem's Institute database.
+
+- Supabase project ref: `weecagwheqepvvgqwvim`
+- Project URL: `https://weecagwheqepvvgqwvim.supabase.co`
+- Database: PostgreSQL 17
+- Region: `us-east-1`
+
+The initial schema and seed data have already been applied to the hosted project. Six tables are created: `program_categories`, `programs`, `course_schedules`, `participants`, `registrations`, and `registration_logs`. The seed contains three categories and fourteen active program records.
+
+### Configure the app connection
+
+1. In Supabase Dashboard, open this V2 project and choose **Connect**.
+2. Copy the **Shared Pooler** PostgreSQL connection URI. Use the URI shown in the dashboard; replace its password placeholder locally.
+3. Copy `.env.example` to `.env.local`, then set `DATABASE_URL` to that URI.
+4. In Vercel or the hosting provider, add `DATABASE_URL` as a server-only environment variable for Production, Preview, and Development as appropriate.
+5. Never name it `NEXT_PUBLIC_DATABASE_URL`, commit `.env.local`, or share the URI/password.
+
+This app uses Drizzle ORM over a trusted server-side PostgreSQL connection. Its public website API routes access the database through the Next.js server. RLS is enabled and `anon` / `authenticated` table privileges are revoked, so do not switch these tables to direct browser access without designing and testing explicit RLS policies first.
+
+### Seed data
+
+The hosted V2 database already contains the seed categories and programs. For a fresh database only, run `scripts/seed.sql` after applying the schema migration. Do not rerun it to reset production data.
