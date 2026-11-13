@@ -5,7 +5,6 @@ import { registrations, participants, programs } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/navbar";
 import { CheckCircle2, Clock, MapPin, Smartphone } from "lucide-react";
@@ -63,8 +62,6 @@ export default async function RegistrationSuccessPage({
 
   return (
     <>
-      <Navbar />
-
       <section className="py-12 bg-[#F1F5F9]">
         <div className="mx-auto max-w-7xl px-6">
           <Card padded className="max-w-2xl mx-auto">
