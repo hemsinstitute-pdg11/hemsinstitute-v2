@@ -4,7 +4,6 @@ import { programs } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { RegistrationForm } from "@/components/registration/form";
 import { Card } from "@/components/ui/card";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/navbar";
 
@@ -46,8 +45,6 @@ export default async function RegistrationPage({
 
   return (
     <>
-      <Navbar />
-
       <section className="py-8 bg-[#F1F5F9]">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-8">
