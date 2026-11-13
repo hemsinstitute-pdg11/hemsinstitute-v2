@@ -4,7 +4,6 @@ import { db } from "@/db";
 import { programs, programCategories, courseSchedules } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/navbar";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder";
@@ -115,8 +114,6 @@ export default async function ProgramDetailPage({
 
   return (
     <>
-      <Navbar />
-
       <section className="relative bg-slate-900/50 overflow-hidden">
         <div className="absolute inset-0 bg-slate-900/60" />
         <div className="mx-auto max-w-7xl px-6 relative py-16 md:py-24 text-center">
