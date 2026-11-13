@@ -9,9 +9,6 @@ import Link from "next/link";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Navbar } from "@/components/layout/navbar";
-import { WhatsAppFloat } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 
 export const dynamic = "force-dynamic";
 
@@ -73,8 +70,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <Navbar />
-
       <section className="relative bg-brand-navy overflow-hidden">
         <div className="absolute inset-0 [mask-image:radial-gradient(circle_at_center,black_30%,transparent_70%)] bg-[#0E2E53] opacity-40" />
         <div className="mx-auto max-w-7xl px-6 relative py-20 md:py-28 text-center">
@@ -352,8 +347,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <Footer />
-      <WhatsAppFloat />
     </>
   );
 }
