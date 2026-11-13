@@ -4,7 +4,6 @@ import { programCategories, programs } from "@/db/schema";
 import { eq, and, count, ilike, or } from "drizzle-orm";
 import { Card } from "@/components/ui/card";
 import { ProgramCard } from "@/components/programs/program-card";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/navbar";
 import { Search, Filter, BookOpen, Clock, Users } from "lucide-react";
@@ -115,8 +114,6 @@ export default async function ProgramsPage({
 
   return (
     <>
-      <Navbar />
-
       <section className="py-12 bg-[#F1F5F9] border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-10">
