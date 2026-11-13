@@ -56,10 +56,10 @@ export function Navbar() {
 
       <div className="hidden border-t border-slate-100 bg-slate-50/80 md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 text-xs font-medium text-slate-600">
-          <a href="tel:+628xxxxxxxxxx" className="flex items-center gap-2 transition-colors hover:text-brand-navy">
+          <div className="flex items-center gap-2">
             <Phone className="size-3.5 text-brand-orange" />
             <span>Hubungi Admin: <strong className="text-brand-navy">628xxxxxxxxxx</strong></span>
-          </a>
+          </div>
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5">
               <Clock className="size-3.5" />
