@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Card } from "@/components/ui/card";
 import { PageHero } from "@/components/ui/page-hero";
-import { Image as ImageIcon, Camera, Users, Clock } from "lucide-react";
+import { Image as ImageIcon, Camera, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Galeri",
