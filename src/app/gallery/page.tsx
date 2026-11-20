@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import { Card } from "@/components/ui/card";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFloat } from "@/components/layout/navbar";
 import { Image, Users, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -56,9 +54,6 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppFloat />
     </>
   );
 }
