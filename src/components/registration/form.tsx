@@ -468,7 +468,8 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
               </div>
               <div className="rounded-2xl border border-orange-200 bg-orange-50 p-5 space-y-2">
                 <h3 className="font-heading font-bold text-slate-900">Pembayaran Pendaftaran</h3>
-                <p className="text-sm text-slate-700">Transfer ke Bank Nagari</p>
+                <p className="text-sm text-slate-700">Transfer biaya pendaftaran sesuai nominal yang diinformasikan admin ke rekening berikut.</p>
+                <p className="text-sm text-slate-700">Bank Nagari</p>
                 <p className="text-lg font-bold tracking-wide text-brand-navy">71000220593444</p>
                 <p className="text-sm text-slate-700">a.n. Zulhemdi Hasra</p>
                 <p className="text-xs leading-5 text-slate-600">Selesaikan transfer sesuai informasi biaya pendaftaran dari admin. Status pembayaran akan diverifikasi setelah bukti transfer diterima.</p>
