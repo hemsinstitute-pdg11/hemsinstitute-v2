@@ -10,7 +10,7 @@ interface PageHeroProps {
 
 export function PageHero({ eyebrow, title, description, icon, compact = false }: PageHeroProps) {
   return (
-    <section className="relative isolate overflow-hidden bg-[#102D53]">
+    <section className="grid-surface-dark relative isolate overflow-hidden bg-[#102D53]">
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_12%_15%,rgba(242,140,40,0.22),transparent_34%),radial-gradient(ellipse_at_88%_80%,rgba(96,165,250,0.16),transparent_38%),linear-gradient(135deg,#102D53_0%,#173B70_58%,#0F2B4E_100%)]" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <div className={"mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8 " + (compact ? "py-12 sm:py-16" : "py-16 sm:py-20 lg:py-24")}>
