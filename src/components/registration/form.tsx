@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { registrationSchema, type RegistrationInput, EducationLevels } from "@/lib/validations";
+import { registrationSchema, EducationLevels } from "@/lib/validations";
 import { cn } from "@/lib/utils";
 
 interface ProgramOption {
