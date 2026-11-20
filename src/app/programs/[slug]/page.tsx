@@ -4,8 +4,6 @@ import { db } from "@/db";
 import { programs, programCategories, courseSchedules } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFloat } from "@/components/layout/navbar";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Clock, Users, MapPin, Play, CheckCircle2 } from "lucide-react";
@@ -284,9 +282,6 @@ export default async function ProgramDetailPage({
           </Card>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppFloat />
     </>
   );
 }
