@@ -6,30 +6,77 @@
   --color-brand-navy: #173B70;
   --color-brand-navy-dark: #0F2B4E;
   --color-brand-navy-hover: #14325C;
-
-  --font-heading: "Poppins", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-
-  --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.04);
-  --shadow-card: 0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --shadow-soft: 0 1px 3px 0 rgb(15 43 78 / 0.06), 0 1px 2px -1px rgb(15 43 78 / 0.04);
+  --shadow-card: 0 12px 28px -12px rgb(15 43 78 / 0.16);
+  --shadow-elevated: 0 24px 48px -18px rgb(15 43 78 / 0.24);
 }
 
-html {
-  scroll-behavior: smooth;
+:root {
+  color-scheme: light;
+  --color-primary: 23 59 112;
+  --color-secondary: 242 140 40;
+  --color-accent: 14 46 83;
+  --color-success: 22 163 74;
+  --color-warning: 217 119 6;
+  --color-error: 220 38 38;
+  --color-surface: 255 255 255;
+  --color-background: 241 245 249;
+  --space-unit: 4px;
+  --radius-control: 12px;
+  --radius-card: 20px;
 }
 
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; text-size-adjust: 100%; }
 body {
+  min-height: 100vh;
   font-family: var(--font-body);
+  background: rgb(var(--color-background));
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
+::selection { color: #fff; background: #173B70; }
+:focus-visible { outline: 3px solid rgb(242 140 40 / 0.75); outline-offset: 3px; }
+a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+.text-shadow-soft { text-shadow: 0 2px 4px rgb(0 0 0 / 0.10); }
+.shadow-soft { box-shadow: var(--shadow-soft); }
+.shadow-card { box-shadow: var(--shadow-card); }
 
-.text-shadow-soft {
-  text-shadow: 0 2px 4px rgb(0 0 0 / 0.10);
-}
-
-.shadow-soft {
+.surface-card {
+  border: 1px solid rgb(148 163 184 / 0.20);
+  border-radius: var(--radius-card);
+  background: rgb(var(--color-surface));
   box-shadow: var(--shadow-soft);
+  transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1), border-color 240ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.surface-card:hover { transform: translateY(-4px); border-color: rgb(242 140 40 / 0.32); box-shadow: var(--shadow-card); }
+.interactive-lift { transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 220ms cubic-bezier(0.4, 0, 0.2, 1), background-color 220ms cubic-bezier(0.4, 0, 0.2, 1), color 220ms cubic-bezier(0.4, 0, 0.2, 1); }
+.interactive-lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-card); }
+.page-enter { animation: fade-in-up 520ms cubic-bezier(0, 0, 0.2, 1) both; }
+@keyframes fade-in-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.mobile-menu-enter { animation: menu-in 180ms cubic-bezier(0, 0, 0.2, 1) both; }
 
-.shadow-card {
-  box-shadow: var(--shadow-card);
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-primary: 147 197 253;
+  --color-secondary: 251 146 60;
+  --color-accent: 96 165 250;
+  --color-success: 74 222 128;
+  --color-warning: 251 191 36;
+  --color-error: 248 113 113;
+  --color-surface: 30 41 59;
+  --color-background: 15 23 42;
+}
+[data-theme="dark"] body { color: #e2e8f0; background: rgb(var(--color-background)); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
