@@ -18,7 +18,7 @@ export default function ContactPage() {
         description="Hubungi kami untuk informasi program, jadwal, dan pendaftaran. Tim kami siap membantu Anda menemukan program yang tepat."
         icon={<MapPin className="size-3.5" />}
       />
-      <section className="bg-slate-50 py-14 sm:py-20">
+      <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div className="grid gap-5">
             <Card className="p-6 sm:p-7">
