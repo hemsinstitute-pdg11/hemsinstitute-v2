@@ -285,21 +285,22 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                           : "border-slate-200 text-slate-700 hover:border-brand-orange/50",
                       )}
                     >
-                      <div className="flex items-start gap-3">
+                      <div className="flex min-w-0 items-start gap-3">
                         <ImagePlaceholderInline category={p.category.toLowerCase().includes("bahasa") ? "bahasa" : p.category.toLowerCase().includes("multimedia") || p.category.toLowerCase().includes("digital") ? "digital" : "profesional"} />
-                        <div className="flex-1">
-                          <p className="font-semibold text-slate-900">{p.name}</p>
-                          <p className="text-xs text-slate-500">{p.category}</p>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex min-w-0 flex-wrap items-start justify-between gap-x-3 gap-y-2">
+                            <p className="min-w-0 flex-1 break-words font-semibold leading-snug text-slate-900">{p.name}</p>
+                            {form.programId === p.id && (
+                              <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-orange-100 px-2.5 py-1 text-[11px] font-bold leading-none text-orange-700">
+                                <Check className="size-3" aria-hidden="true" />
+                                Terpilih
+                              </span>
+                            )}
+                          </div>
+                          <p className="mt-1 text-xs text-slate-500">{p.category}</p>
+                          <p className="mt-1 text-xs font-medium text-slate-400">Hubungi Admin untuk Harga</p>
                         </div>
-                        <span className="ml-auto text-xs font-medium text-slate-400">
-                          Hubungi Admin untuk Harga
-                        </span>
                       </div>
-                      {form.programId === p.id && (
-                        <span className="absolute right-3 top-3 text-brand-orange font-bold">
-                          Terpilih
-                        </span>
-                      )}
                     </button>
                   </label>
                 ))}
