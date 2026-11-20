@@ -136,7 +136,7 @@ export function Navbar() {
 }
 
 export function WhatsAppFloat() {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6285376534343";
+  const number = "6285376534343";
   if (!number) return null;
 
   return (
