@@ -49,9 +49,32 @@ button, a { touch-action: manipulation; }
   border-radius: var(--radius-card);
   background: rgb(var(--color-surface));
   box-shadow: var(--shadow-soft);
-  transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1), border-color 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 260ms cubic-bezier(0.2, 0.75, 0.25, 1), box-shadow 260ms ease, border-color 260ms ease, background-color 260ms ease;
 }
-.surface-card:hover { transform: translateY(-4px); border-color: rgb(242 140 40 / 0.32); box-shadow: var(--shadow-card); }
+.surface-card:hover {
+  transform: translateY(-5px);
+  border-color: rgb(37 99 235 / 0.55);
+  background-color: #eff6ff;
+  box-shadow: 0 16px 38px -16px rgb(23 59 112 / 0.28), 0 0 0 1px rgb(59 130 246 / 0.10);
+}
+.surface-card:focus-within {
+  border-color: rgb(37 99 235 / 0.65);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.12);
+}
+/* Cover standalone content cards not using the shared Card component. */
+main article[class*="rounded"] {
+  transition: transform 260ms ease, background-color 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
+}
+main article[class*="rounded"]:hover {
+  transform: translateY(-5px);
+  border-color: rgb(37 99 235 / 0.55);
+  background-color: #eff6ff;
+  box-shadow: 0 16px 38px -16px rgb(23 59 112 / 0.24);
+}
+@media (prefers-reduced-motion: reduce) {
+  .surface-card:hover,
+  main article[class*="rounded"]:hover { transform: none; }
+}
 .interactive-lift { transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 220ms cubic-bezier(0.4, 0, 0.2, 1), background-color 220ms cubic-bezier(0.4, 0, 0.2, 1), color 220ms cubic-bezier(0.4, 0, 0.2, 1); }
 .interactive-lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-card); }
 .page-enter { animation: fade-in-up 520ms cubic-bezier(0, 0, 0.2, 1) both; }
