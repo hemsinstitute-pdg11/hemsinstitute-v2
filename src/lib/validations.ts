@@ -13,7 +13,10 @@ export const registrationSchema = z
       .min(10, "Nomor WhatsApp terlalu pendek.")
       .max(20, "Nomor WhatsApp terlalu panjang."),
     email: z.string().email("Format email tidak valid.").optional().or(z.literal("")),
-    birthDate: z.string().optional().or(z.literal("")),
+    birthPlace: z.string().min(2, "Tempat lahir harus diisi."),
+    birthDate: z.string().min(1, "Tanggal lahir harus diisi."),
+    domicileAddress: z.string().min(5, "Alamat domisili harus diisi."),
+    sourceChannel: z.string().min(1, "Sumber informasi harus dipilih."),
     educationLevel: z.enum(EducationLevels, {
       error: "Tingkat pendidikan harus dipilih.",
     }),
