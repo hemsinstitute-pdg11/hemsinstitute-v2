@@ -117,7 +117,7 @@ export default async function ProgramDetailPage({
     <>
       <PageHero eyebrow={program.category} title={program.name} description={program.description} icon={<BookOpenIcon />} />
 
-      <section className="bg-slate-50 py-12 sm:py-16">
+      <section className="grid-surface bg-slate-50 py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <Card padded>
             <CardHeader>
