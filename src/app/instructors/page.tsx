@@ -18,7 +18,7 @@ export default function InstructorsPage() {
   return (
     <>
       <PageHero eyebrow="Belajar dengan Bimbingan" title="Kenali Tim Instruktur Kami" description="Tim instruktur Hem's Institute siap membimbing Anda dalam mengembangkan keterampilan bahasa asing, multimedia, dan profesional." icon={<GraduationCap className="size-3.5" />} />
-      <section className="bg-slate-50 py-14 sm:py-20">
+      <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-9"><p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-orange">Tim Pengajar</p><h2 className="mt-2 font-heading text-2xl font-bold text-slate-900 sm:text-3xl">Pendamping proses belajar Anda</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Kenali bidang pembelajaran yang didukung oleh tim instruktur Hem's Institute.</p></div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
