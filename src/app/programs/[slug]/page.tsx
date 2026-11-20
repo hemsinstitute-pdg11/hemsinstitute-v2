@@ -6,8 +6,7 @@ import { programs, programCategories, courseSchedules } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder";
-import { Button } from "@/components/ui/button";
-import { ChevronRight, Clock, Users, MapPin, CheckCircle2, BookOpen as BookOpenIcon } from "lucide-react";
+import { ChevronRight, Clock, Users, MapPin, BookOpen as BookOpenIcon } from "lucide-react";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
