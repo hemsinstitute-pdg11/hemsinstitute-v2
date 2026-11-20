@@ -6,6 +6,7 @@ export const registrationSchema = z
   .object({
     programId: z.string().uuid("Program tidak valid."),
     scheduleId: z.string().uuid().optional().nullable(),
+    scheduleIds: z.array(z.string().uuid()).min(1, "Pilih minimal satu jadwal.").max(27, "Maksimal 27 pilihan jadwal."),
     learningMethod: z.string().min(1, "Metode belajar harus dipilih."),
     fullName: z.string().min(2, "Nama lengkap minimal 2 karakter."),
     phone: z
