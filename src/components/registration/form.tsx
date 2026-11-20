@@ -265,7 +265,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                 jadwal akan dikonfirmasi oleh admin setelah pendaftaran.
               </p>
 
-              <div className="space-y-3">
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
                 {programs.map((p) => (
                   <label key={p.id} className="block cursor-pointer">
                     <button
