@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import { Card } from "@/components/ui/card";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFloat } from "@/components/layout/navbar";
 import Link from "next/link";
 import { Clock, Newspaper, Users, ArrowRight } from "lucide-react";
 
@@ -93,9 +91,6 @@ export default function NewsPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppFloat />
     </>
   );
 }
