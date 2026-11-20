@@ -30,7 +30,7 @@ export default function AboutPage() {
     <>
       <PageHero eyebrow="Profil Institusi" title="Tentang Hem's Institute" description="Lembaga pendidikan dan pelatihan vokasi di Padang, Sumatera Barat yang berdiri sejak 2011." />
 
-      <section className="bg-white py-14 sm:py-20">
+      <section className="grid-surface bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
             <div className="space-y-8">
@@ -94,7 +94,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-14 sm:py-20">
+      <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 text-center mb-12">
             Visi dan Misi
@@ -158,7 +158,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-white py-14 sm:py-20">
+      <section className="grid-surface border-t border-slate-200 bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div>
@@ -182,7 +182,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-14 sm:py-20">
+      <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
@@ -210,7 +210,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-white py-14 sm:py-20">
+      <section className="grid-surface border-t border-slate-200 bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 text-center">Informasi Hukum</h2>
