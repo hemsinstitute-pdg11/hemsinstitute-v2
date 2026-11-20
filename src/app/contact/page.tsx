@@ -51,11 +51,28 @@ export default function ContactPage() {
           </div>
           <div className="grid gap-5">
             <Card padded={false} className="overflow-hidden">
-              <div className="flex min-h-[320px] flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,rgba(242,140,40,0.14),transparent_55%),linear-gradient(135deg,#eff6ff,#f8fafc)] p-8 text-center sm:min-h-[400px]">
-                <span className="mb-4 grid size-16 place-items-center rounded-2xl bg-white text-brand-orange shadow-card"><MapPin className="size-8" /></span>
-                <h2 className="font-heading text-xl font-bold text-slate-900">Hem's Institute</h2>
-                <p className="mt-2 max-w-sm text-sm leading-6 text-slate-600">Jl. Azizi No.32, Andalas, Kec. Padang Timur, Kota Padang, Sumatera Barat</p>
-                <p className="mt-5 max-w-sm text-xs leading-5 text-slate-500">Peta lokasi detail akan ditambahkan setelah alamat kantor lengkap tersedia.</p>
+              <div className="border-b border-slate-100 px-5 py-4">
+                <h2 className="font-heading text-lg font-bold text-slate-900">Lokasi Hem's Institute</h2>
+                <p className="mt-1 text-sm text-slate-600">Jl. Azizi No.32, Andalas, Kec. Padang Timur, Kota Padang, Sumatera Barat</p>
+              </div>
+              <iframe
+                title="Peta lokasi Hem's Institute Padang"
+                src="https://www.google.com/maps?q=-0.941620,100.379970&z=17&output=embed"
+                className="h-[320px] w-full sm:h-[400px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+              <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
+                <p className="text-xs text-slate-500">Koordinat: -0.941620, 100.379970</p>
+                <a
+                  href="https://www.google.com/maps?q=-0.941620,100.379970"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-brand-navy transition-colors hover:text-brand-orange"
+                >
+                  Buka di Google Maps
+                </a>
               </div>
             </Card>
             <Card className="flex flex-col items-start justify-between gap-5 bg-[#102D53] p-6 text-white sm:flex-row sm:items-center sm:p-8">
