@@ -85,7 +85,7 @@ export default function AboutPage() {
                 <div>
                   <p className="font-semibold text-slate-900">Bidang Unggulan</p>
                   <p className="text-sm text-slate-600">
-                    Bahasa asing, multimedia &amp; digital, keterampilan profesional
+                    Language Class dan Computer Class
                   </p>
                 </div>
               </div>
