@@ -43,10 +43,7 @@ export default function AboutPage() {
                 bagi masyarakat.
               </p>
               <p className="text-slate-600 leading-relaxed mt-4">
-                Seiring berkembangnya kebutuhan akan keterampilan digital,
-                kami memperluas program ke multimedia, pemasaran digital, dan
-                keterampilan profesional untuk mendukung karir peserta di era
-                ini.
+                Saat ini Hem's Institute berfokus pada dua kategori program, yaitu Language Class dan Computer Class. English Class menjadi program unggulan, didukung kelas Japanese, Korean, Mandarin, Arabic, Aplikasi Perkantoran, dan Animasi.
               </p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-8">
