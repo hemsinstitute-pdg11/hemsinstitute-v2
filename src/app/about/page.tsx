@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { PageHero } from "@/components/ui/page-hero";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { BookOpen, Building2, GraduationCap, Users, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
