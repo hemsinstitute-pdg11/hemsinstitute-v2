@@ -154,20 +154,29 @@ export async function POST(request: Request) {
       }
 
       // Validasi jadwal jika dipilih
-      if (data.scheduleId) {
-        const [schedule] = await tx
-          .select({ id: courseSchedules.id })
-          .from(courseSchedules)
-          .where(
-            and(
-              eq(courseSchedules.id, data.scheduleId),
-              eq(courseSchedules.isActive, true),
-              eq(courseSchedules.programId, data.programId),
-            ),
-          );
-        if (!schedule) {
-          throw new Error("Jadwal tidak valid untuk program ini.");
-        }
+      const selectedScheduleIds = data.scheduleIds?.length
+        ? [...new Set(data.scheduleIds)]
+        : data.scheduleId
+          ? [data.scheduleId]
+          : [];
+      if (selectedScheduleIds.length === 0) {
+        throw new Error("Pilih minimal satu jadwal.");
+      }
+      const validSchedules = await tx
+        .select({ id: courseSchedules.id, learningMethod: courseSchedules.learningMethod })
+        .from(courseSchedules)
+        .where(
+          and(
+            sql`${courseSchedules.id} = ANY(ARRAY[${sql.join(selectedScheduleIds.map((id) => sql`${id}::uuid`), sql`, `)}]::uuid[])`,
+            eq(courseSchedules.isActive, true),
+            eq(courseSchedules.programId, data.programId),
+          ),
+        );
+      if (validSchedules.length !== selectedScheduleIds.length) {
+        throw new Error("Satu atau beberapa jadwal tidak valid untuk program ini.");
+      }
+      if (validSchedules.some((schedule) => schedule.learningMethod !== data.learningMethod)) {
+        throw new Error("Metode belajar tidak sesuai dengan jadwal yang dipilih.");
       }
 
       const [registration] = await tx
@@ -177,7 +186,8 @@ export async function POST(request: Request) {
           registrationCode,
           participantId: participant.id,
           programId: data.programId,
-          scheduleId: data.scheduleId || null,
+          scheduleId: selectedScheduleIds[0] || null,
+          scheduleIds: selectedScheduleIds,
           status: "new",
           learningMethod: data.learningMethod,
           consentAt: data.consent ? new Date() : null,
