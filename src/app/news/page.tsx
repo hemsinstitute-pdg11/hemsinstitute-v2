@@ -18,7 +18,7 @@ export default function NewsPage() {
   return (
     <>
       <PageHero eyebrow="Wawasan & Informasi" title="Berita dan Artikel" description="Artikel edukasi, tips belajar bahasa, informasi keterampilan digital, dan pengumuman dari Hem's Institute." icon={<Newspaper className="size-3.5" />} />
-      <section className="bg-slate-50 py-14 sm:py-20">
+      <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-9"><p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-orange">Pusat Informasi</p><h2 className="mt-2 font-heading text-2xl font-bold text-slate-900 sm:text-3xl">Baca dan temukan inspirasi</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Informasi seputar pembelajaran, keterampilan, dan pengembangan diri.</p></div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
