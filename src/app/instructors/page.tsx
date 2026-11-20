@@ -5,7 +5,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { GraduationCap, Users, ArrowRight, BookOpen, Laptop, Palette } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Instruktur - Hem's Institute",
+  title: "Instruktur",
   description: "Profil instruktur Hem's Institute yang siap membimbing Anda dalam belajar bahasa asing, multimedia, dan keterampilan profesional.",
 };
 
