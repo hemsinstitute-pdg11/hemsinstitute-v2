@@ -93,7 +93,7 @@ export default function RootLayout({
       </head>
       <body className="bg-[#F1F5F9] text-slate-900 antialiased min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main className="page-enter flex-grow">{children}</main>
         <Footer />
         <WhatsAppFloat />
       </body>
