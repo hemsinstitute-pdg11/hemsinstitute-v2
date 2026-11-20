@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { PageHero } from "@/components/ui/page-hero";
-import { MapPin, Smartphone, Mail, Clock, ArrowRight, Instagram } from "lucide-react";
+import { MapPin, Smartphone, Mail, Clock, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Kontak",
