@@ -75,7 +75,7 @@ export default async function HomePage() {
         <div className="mobile-hero-inner mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
           <div className="max-w-2xl">
             <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-300/30 bg-orange-300/10 px-4 py-2 text-xs font-bold tracking-[0.14em] text-orange-200">
-              <span className="size-1.5 rounded-full bg-brand-orange" />
+              <span aria-hidden="true" className="status-dot size-1.5 rounded-full bg-brand-orange" />
               TERPERCAYA SEJAK 2011
             </span>
             <h1 className="mobile-hero-title mb-6 font-heading text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-white">
