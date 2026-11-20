@@ -4,8 +4,6 @@ import { programs } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { RegistrationForm } from "@/components/registration/form";
 import { Card } from "@/components/ui/card";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFloat } from "@/components/layout/navbar";
 
 export const metadata: Metadata = {
   title: "Pendaftaran Online - Hem's Institute",
@@ -70,9 +68,6 @@ export default async function RegistrationPage({
           <RegistrationForm programs={programOptions} />
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppFloat />
     </>
   );
 }
