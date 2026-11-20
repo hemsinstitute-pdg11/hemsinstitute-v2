@@ -92,7 +92,7 @@ export default async function ProgramsPage({ searchParams }: { searchParams: Pro
           </div>
           {items.length > 0 ? (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {items.map((p) => <ProgramCard key={p.id} id={p.id} name={p.name} category={p.category} slug={p.slug} description={p.description} targetAudience={p.targetAudience} price={p.price} categoryKey={p.categorySlug === "bahasa-asing" ? "bahasa" : p.categorySlug === "multimedia-digital" ? "digital" : "profesional"} />)}
+              {items.map((p) => <ProgramCard key={p.id} id={p.id} name={p.name} category={p.category} slug={p.slug} description={p.description} targetAudience={p.targetAudience} price={p.price} categoryKey={p.categorySlug === "language-class" ? "bahasa" : "digital"} />)}
             </div>
           ) : (
             <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 py-16 text-center">
