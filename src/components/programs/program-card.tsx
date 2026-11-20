@@ -46,6 +46,7 @@ export function ProgramCard({
           <span className="inline-flex items-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600">
             {category}
           </span>
+          {slug === "english-class" && <span className="inline-flex items-center rounded-lg border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-bold text-orange-700">Program Unggulan</span>}
           <span className="ml-auto text-right text-xs font-medium text-slate-500">
             {targetAudience}
           </span>
