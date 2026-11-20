@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { BookOpen, Building2, GraduationCap, Users, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tentang Kami - Hem's Institute",
+  title: "Tentang Kami",
   description:
     "Profil, sejarah, visi, dan misi Hem's Institute, lembaga pendidikan dan pelatihan vokasi di Padang sejak 2011.",
 };
