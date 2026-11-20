@@ -24,7 +24,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="grid-surface-header sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-soft backdrop-blur-xl">
+    <header className="mobile-glass-header grid-surface-header sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-soft backdrop-blur-xl">
       <div className="mx-auto flex min-h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -98,7 +98,7 @@ export function Navbar() {
         <nav
           id="mobile-primary-navigation"
           aria-label="Navigasi mobile"
-          className="mobile-menu-enter border-t border-slate-100 bg-white px-4 py-4 shadow-lg lg:hidden"
+          className="mobile-glass-menu mobile-menu-enter border-t border-slate-100 bg-white px-4 py-4 shadow-lg lg:hidden"
         >
           <div className="mx-auto max-w-7xl space-y-1">
             {links.map((link) => {
@@ -144,7 +144,7 @@ export function WhatsAppFloat() {
       href={"https://wa.me/" + number}
       target="_blank"
       rel="noopener noreferrer"
-      className="interactive-lift fixed bottom-5 right-5 z-40 inline-flex min-h-12 items-center gap-2 rounded-2xl bg-[#168A55] px-4 py-3 text-sm font-bold text-white shadow-lg hover:bg-[#117346] focus-visible:ring-2 focus-visible:ring-[#168A55] focus-visible:ring-offset-2"
+      className="mobile-glass-whatsapp interactive-lift fixed bottom-5 right-5 z-40 inline-flex min-h-12 items-center gap-2 rounded-2xl bg-[#168A55] px-4 py-3 text-sm font-bold text-white shadow-lg hover:bg-[#117346] focus-visible:ring-2 focus-visible:ring-[#168A55] focus-visible:ring-offset-2"
       aria-label="Kontak kami via WhatsApp"
     >
       <Send className="size-5" />
