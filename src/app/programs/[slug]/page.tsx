@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     .where(eq(programs.slug, slug));
 
   if (!program) {
-    return { title: "Program Tidak Ditemukan - Hem's Institute" };
+    return { title: "Program Tidak Ditemukan" };
   }
 
   return {
@@ -248,10 +248,8 @@ export default async function ProgramDetailPage({
               <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <span className="font-bold text-brand-navy text-lg">{priceLabel}</span>
                 <div className="flex gap-3">
-                  <Link href="/registration" className="flex-1">
-                    <Button variant="primary" className="w-full">
-                      Daftar Sekarang <ChevronRight className="size-4 ml-2" />
-                    </Button>
+                  <Link href={`/registration?program=${program.slug}`} className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-brand-orange px-6 text-sm font-bold text-white transition hover:bg-[#D97706] focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2">
+                    Daftar Sekarang <ChevronRight className="size-4" />
                   </Link>
                 </div>
               </div>
