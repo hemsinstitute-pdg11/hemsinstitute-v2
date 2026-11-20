@@ -32,6 +32,7 @@ interface FormState {
   step: Step;
   programId: string | null;
   scheduleId: string | null;
+  scheduleIds: string[];
   learningMethod: string;
   fullName: string;
   birthPlace: string;
@@ -51,6 +52,7 @@ const emptyState: FormState = {
   step: 1,
   programId: null,
   scheduleId: null,
+  scheduleIds: [],
   learningMethod: "",
   fullName: "",
   birthPlace: "",
@@ -151,7 +153,8 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           programId: form.programId,
-          scheduleId: form.scheduleId || undefined,
+          scheduleId: form.scheduleIds[0] || undefined,
+          scheduleIds: form.scheduleIds,
           learningMethod: form.learningMethod,
           fullName: form.fullName,
           phone: form.phone,
@@ -275,7 +278,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                     <button
                       type="button"
                       onClick={() => {
-                        update({ programId: p.id, scheduleId: null, learningMethod: "" });
+                        update({ programId: p.id, scheduleId: null, scheduleIds: [], learningMethod: "" });
                       }}
                       disabled={submitting}
                       className={cn(
@@ -311,7 +314,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                   <div className="flex flex-wrap items-end justify-between gap-2">
                     <div>
                       <h3 className="font-semibold text-slate-900">{requiredMarker} Pilih Jadwal</h3>
-                      <p className="mt-1 text-xs text-slate-500">Buka hari yang diinginkan, lalu pilih salah satu jam</p>
+                      <p className="mt-1 text-xs text-slate-500">Buka hari yang diinginkan, lalu pilih satu atau beberapa jam</p>
                     </div>
                     <span className="rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-semibold text-brand-navy">
                       90 menit / sesi
@@ -324,7 +327,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                         (schedule) => schedule.day === day && schedule.isActive,
                       );
                       const selectedInDay = daySchedules.some(
-                        (schedule) => schedule.id === form.scheduleId,
+                        (schedule) => form.scheduleIds.includes(schedule.id),
                       );
 
                       return (
@@ -344,8 +347,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                               <span className="min-w-0">
                                 <span className="block text-sm font-semibold text-slate-900">{day}</span>
                                 <span className="block text-xs text-slate-500">
-                                  {daySchedules.length} pilihan waktu
-                                  {selectedInDay ? " · Jadwal dipilih" : ""}
+                                  {daySchedules.length} pilihan waktu · {daySchedules.filter((schedule) => form.scheduleIds.includes(schedule.id)).length} dipilih
                                 </span>
                               </span>
                             </span>
@@ -363,17 +365,21 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
 
                           <div className="grid grid-cols-1 gap-2 border-t border-slate-100 p-3 sm:grid-cols-2">
                             {daySchedules.map((schedule) => {
-                              const isSelected = form.scheduleId === schedule.id;
+                              const isSelected = form.scheduleIds.includes(schedule.id);
                               return (
                                 <button
                                   key={schedule.id}
                                   type="button"
-                                  onClick={() =>
+                                  onClick={() => {
+                                    const nextIds = isSelected
+                                      ? form.scheduleIds.filter((id) => id !== schedule.id)
+                                      : [...form.scheduleIds, schedule.id];
                                     update({
-                                      scheduleId: schedule.id,
-                                      learningMethod: schedule.learningMethod,
-                                    })
-                                  }
+                                      scheduleIds: nextIds,
+                                      scheduleId: nextIds[0] ?? null,
+                                      learningMethod: nextIds.length > 0 ? schedule.learningMethod : "",
+                                    });
+                                  }}
                                   disabled={submitting}
                                   aria-pressed={isSelected}
                                   className={cn(
@@ -395,7 +401,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                                     "shrink-0 rounded-lg px-2 py-1 text-[10px] font-semibold",
                                     isSelected ? "bg-brand-orange text-white" : "bg-slate-100 text-slate-500",
                                   )}>
-                                    {isSelected ? "Dipilih" : `Kuota ${schedule.capacity}`}
+                                    {isSelected ? "Dipilih ✓" : `Kuota ${schedule.capacity}`}
                                   </span>
                                 </button>
                               );
@@ -633,10 +639,14 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                 </div>
                 <div className="space-y-2">
                   <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Jadwal</p>
-                  <p className="text-slate-900 font-medium">
-                    {schedules.find((s) => s.id === form.scheduleId)?.day ?? "-"}{" "}
-                    {schedules.find((s) => s.id === form.scheduleId)?.startTime ? "-" : "-"}
-                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {schedules.filter((schedule) => form.scheduleIds.includes(schedule.id)).map((schedule) => (
+                      <span key={schedule.id} className="rounded-lg bg-blue-50 px-2.5 py-1.5 text-xs font-semibold text-brand-navy">
+                        {schedule.day}, {formatTime(schedule.startTime)}–{formatTime(schedule.endTime)}
+                      </span>
+                    ))}
+                    {form.scheduleIds.length === 0 && <span className="text-slate-500">Belum dipilih</span>}
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Metode Belajar</p>
