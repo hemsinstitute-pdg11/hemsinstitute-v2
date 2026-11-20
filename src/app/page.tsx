@@ -69,7 +69,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="grid-surface relative isolate overflow-hidden bg-[#102D53]">
+      <section className="grid-surface-dark relative isolate overflow-hidden bg-[#102D53]">
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_15%_20%,rgba(242,140,40,0.22),transparent_34%),radial-gradient(ellipse_at_85%_75%,rgba(96,165,250,0.18),transparent_38%),linear-gradient(135deg,#102D53_0%,#173B70_55%,#0F2B4E_100%)]" />
         <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
