@@ -24,7 +24,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-soft backdrop-blur-xl">
+    <header className="grid-surface-header sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-soft backdrop-blur-xl">
       <div className="mx-auto flex min-h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
