@@ -5,7 +5,6 @@ import { db } from "@/db";
 import { registrations, participants, programs } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { CheckCircle2, Clock, MapPin, Smartphone, ArrowLeft, MessageCircle } from "lucide-react";
 import { formatIdDate } from "@/lib/date";
 
