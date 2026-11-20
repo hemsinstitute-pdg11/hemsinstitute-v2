@@ -27,15 +27,15 @@ export default function ContactPage() {
               <div className="space-y-5">
                 <div className="flex gap-4">
                   <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-orange-50 text-brand-orange"><MapPin className="size-5" /></span>
-                  <div><h3 className="font-semibold text-slate-900">Alamat</h3><p className="mt-1 text-sm leading-6 text-slate-600">Padang, Sumatera Barat, Indonesia</p></div>
+                  <div><h3 className="font-semibold text-slate-900">Alamat</h3><p className="mt-1 text-sm leading-6 text-slate-600">Hem’s Institute Padang, Jl. Azizi No.32, Andalas, Kec. Padang Timur, Kota Padang, Sumatera Barat</p></div>
                 </div>
                 <div className="flex gap-4">
                   <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-orange-50 text-brand-orange"><Smartphone className="size-5" /></span>
-                  <div><h3 className="font-semibold text-slate-900">WhatsApp Admin</h3><p className="mt-1 text-sm text-brand-navy">628xxxxxxxxxx</p></div>
+                  <div><h3 className="font-semibold text-slate-900">WhatsApp Admin</h3><a href="https://wa.me/6285376534343" className="mt-1 inline-block text-sm text-brand-navy hover:underline">085376534343</a></div>
                 </div>
                 <div className="flex gap-4">
                   <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-orange-50 text-brand-orange"><Mail className="size-5" /></span>
-                  <div><h3 className="font-semibold text-slate-900">Email</h3><p className="mt-1 text-sm text-slate-600">info@hemsinstitute.ac.id</p></div>
+                  <div><h3 className="font-semibold text-slate-900">Email</h3><a href="mailto:hems.institute@gmail.com" className="mt-1 inline-block text-sm text-slate-600 hover:underline">hems.institute@gmail.com</a></div>
                 </div>
               </div>
             </Card>
@@ -45,9 +45,7 @@ export default function ContactPage() {
                 <h2 className="font-heading text-xl font-bold text-slate-900">Jam Operasional</h2>
               </div>
               <dl className="space-y-3 text-sm">
-                <div className="flex justify-between gap-4 border-b border-slate-100 pb-3"><dt className="text-slate-600">Senin - Jumat</dt><dd className="font-semibold text-slate-900">08.00 - 16.00 WIB</dd></div>
-                <div className="flex justify-between gap-4 border-b border-slate-100 pb-3"><dt className="text-slate-600">Sabtu</dt><dd className="font-semibold text-slate-900">08.00 - 12.00 WIB</dd></div>
-                <div className="flex justify-between gap-4"><dt className="text-slate-600">Minggu</dt><dd className="font-semibold text-slate-900">Tutup</dd></div>
+                <div className="flex justify-between gap-4"><dt className="text-slate-600">Senin - Minggu</dt><dd className="font-semibold text-slate-900">09.00 - 20.30 WIB</dd></div>
               </dl>
             </Card>
           </div>
@@ -56,7 +54,7 @@ export default function ContactPage() {
               <div className="flex min-h-[320px] flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,rgba(242,140,40,0.14),transparent_55%),linear-gradient(135deg,#eff6ff,#f8fafc)] p-8 text-center sm:min-h-[400px]">
                 <span className="mb-4 grid size-16 place-items-center rounded-2xl bg-white text-brand-orange shadow-card"><MapPin className="size-8" /></span>
                 <h2 className="font-heading text-xl font-bold text-slate-900">Hem's Institute</h2>
-                <p className="mt-2 max-w-sm text-sm leading-6 text-slate-600">Padang, Sumatera Barat, Indonesia</p>
+                <p className="mt-2 max-w-sm text-sm leading-6 text-slate-600">Jl. Azizi No.32, Andalas, Kec. Padang Timur, Kota Padang, Sumatera Barat</p>
                 <p className="mt-5 max-w-sm text-xs leading-5 text-slate-500">Peta lokasi detail akan ditambahkan setelah alamat kantor lengkap tersedia.</p>
               </div>
             </Card>
