@@ -28,6 +28,23 @@
   --radius-card: 20px;
 }
 
+/* Prevent accidental horizontal page scrolling on narrow viewports. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  min-width: 0;
+}
+
+main {
+  width: 100%;
+  min-width: 0;
+}
+
 html { scroll-behavior: smooth; scroll-padding-top: 6rem; text-size-adjust: 100%; }
 body {
   min-height: 100vh;
