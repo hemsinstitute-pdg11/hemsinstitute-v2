@@ -4,7 +4,7 @@ import {
   programs,
 } from "@/db/schema";
 import { eq, and, count } from "drizzle-orm";
-import { ArrowRight, ChevronRight, Play, Star, ShieldCheck, Users, Layers } from "lucide-react";
+import { ArrowRight, ChevronRight, Star, ShieldCheck, Users, Layers } from "lucide-react";
 import Link from "next/link";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -146,8 +146,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="bg-white py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 mb-3">Tentang Kami</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
@@ -159,7 +159,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
             <div className="flex items-start gap-4">
               <div className="rounded-lg bg-brand-orange/10 p-3 text-brand-orange">
                 <Layers className="size-5" />
@@ -199,8 +199,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#F1F5F9]">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="bg-slate-50 py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 mb-3">Kategori Program Unggulan</h2>
             <p className="text-slate-600">
@@ -208,7 +208,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-5 md:grid-cols-3">
             {categories.map((cat) => (
               <Card
                 key={cat.id}
@@ -245,8 +245,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="bg-white py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/2">
               <ImagePlaceholder category="digital" label="Kelas Belajar" className="h-64 rounded-2xl shadow-card" />
@@ -297,9 +297,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#F1F5F9]">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section className="bg-slate-50 py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
             <div className="space-y-6">
               <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900">Mengapa Memilih Hem's Institute?</h2>
               <ul className="space-y-4">
@@ -334,7 +334,7 @@ export default async function HomePage() {
       </section>
 
       <section className="py-16 bg-white border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900">Testimonial</h2>
             <p className="text-slate-600">
@@ -356,7 +356,7 @@ export default async function HomePage() {
       </section>
 
       <section className="py-16 bg-[#F1F5F9] border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900">Galeri Kegiatan Belajar</h2>
             <p className="text-slate-600">
@@ -374,7 +374,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-brand-navy">
+      <section className="bg-[#102D53] py-16 sm:py-20">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-6">
             Siap Mengembangkan Keterampilan Anda?
