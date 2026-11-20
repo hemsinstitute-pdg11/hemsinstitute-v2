@@ -224,9 +224,9 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
 
   return (
     <section className="py-2 sm:py-4">
-      <div className="mx-auto max-w-3xl">
-        <Card className="mb-8 p-5 sm:p-8">
-          <div className="mb-6 grid grid-cols-4 gap-2 sm:gap-4">
+      <div className="mx-auto w-full max-w-5xl">
+        <Card className="mb-8 p-4 sm:p-7 lg:p-10">
+          <div className="mb-8 grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
             {stepperItems.map((item) => (
               <div key={item.number} className="relative flex min-w-0 flex-col items-center gap-2">
                 {item.number > 1 && (
@@ -242,13 +242,13 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                 >
                   {item.number}
                 </div>
-                <span className={cn("text-xs font-medium", form.step >= item.number ? "text-brand-navy" : "text-slate-500")}>
+                <span className={cn("text-[10px] leading-tight text-center font-medium sm:text-xs lg:text-sm", form.step >= item.number ? "text-brand-navy" : "text-slate-500")}>
                   {item.label}
                 </span>
               </div>
             ))}
           </div>
-          <h1 className="mb-8 font-heading text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+          <h1 className="mb-8 font-heading text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
             Formulir Pendaftaran Online
           </h1>
 
@@ -304,7 +304,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
               {form.programId && schedules.length > 0 && (
                 <div className="space-y-3 pt-4 border-t border-slate-100">
                   <h3 className="font-semibold text-slate-900">{requiredMarker} Pilih Jadwal</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
                     {schedules.map((s) => (
                       <button
                         key={s.id}
@@ -356,7 +356,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                     {requiredMarker} Metode Belajar
                   </label>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                   {["Tatap muka", "Online", "Gabungan"].map((method) => (
                     <button
                       key={method}
@@ -388,7 +388,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                 Isi data lengkap sesuai KTP / akta kelahiran peserta.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-2">
                   <label className="flex items-center gap-1 text-sm font-medium text-slate-700">
                     Nama Lengkap {requiredMarker}
@@ -421,7 +421,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-slate-700">Tempat Lahir {requiredMarker}</label>
                   <input id="birthPlace" value={form.birthPlace} onChange={(e) => update({ birthPlace: e.target.value })} required className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" placeholder="Contoh: Padang" />
