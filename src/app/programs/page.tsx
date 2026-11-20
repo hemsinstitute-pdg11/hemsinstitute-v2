@@ -4,8 +4,6 @@ import { programCategories, programs } from "@/db/schema";
 import { eq, and, count, ilike, or } from "drizzle-orm";
 import { Card } from "@/components/ui/card";
 import { ProgramCard } from "@/components/programs/program-card";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFloat } from "@/components/layout/navbar";
 import { Search, Filter, BookOpen, Clock, Users } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -224,9 +222,6 @@ export default async function ProgramsPage({
           )}
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppFloat />
     </>
   );
 }
