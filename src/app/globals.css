@@ -115,3 +115,54 @@ textarea::placeholder {
     max-width: 100%;
   }
 }
+
+
+/* Editorial grid system: a quiet, consistent visual rhythm across every route. */
+.grid-surface {
+  background-image:
+    linear-gradient(rgb(23 59 112 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(23 59 112 / 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center top;
+  background-attachment: local;
+}
+
+.grid-surface-dark {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center top;
+}
+
+.grid-surface-header {
+  background-image:
+    linear-gradient(rgb(23 59 112 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(23 59 112 / 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center;
+}
+
+.grid-surface-footer {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    radial-gradient(ellipse at 15% 0%, rgb(242 140 40 / 0.12), transparent 38%);
+  background-size: 48px 48px, 48px 48px, auto;
+  background-position: center top;
+}
+
+@media (max-width: 639px) {
+  .grid-surface,
+  .grid-surface-dark,
+  .grid-surface-footer {
+    background-size: 36px 36px, 36px 36px, auto;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .grid-surface .surface-card,
+  .grid-surface .group {
+    transition-timing-function: cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+}
