@@ -185,17 +185,19 @@ export default function AboutPage() {
       <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
-            <Card padded className="space-y-6">
-              <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900">Fasilitas</h2>
-              <ul className="space-y-3">
-                {facilities.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-slate-600 text-sm leading-relaxed">
-                    <span className="text-brand-orange shrink-0 mt-1.5">•</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </Card>
+            <div>
+              <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 mb-6">Fasilitas</h2>
+              <Card padded>
+                <ul className="space-y-3">
+                  {facilities.map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-slate-600 text-sm leading-relaxed">
+                      <span className="text-brand-orange shrink-0 mt-1.5">•</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </div>
             <div>
               <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 mb-6">Kerjasama</h2>
               <Card padded className="text-center">
