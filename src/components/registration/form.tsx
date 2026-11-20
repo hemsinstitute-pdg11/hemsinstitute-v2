@@ -70,7 +70,6 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
   const router = useRouter();
   const [form, setForm] = useState<FormState>(emptyState);
   const [schedules, setSchedules] = useState<ScheduleOption[]>([]);
-  const [selectedScheduleDay, setSelectedScheduleDay] = useState("Senin");
   const [schedulesLoading, setSchedulesLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -196,13 +195,6 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
   const availableScheduleDays = scheduleDayOrder.filter((day) =>
     schedules.some((schedule) => schedule.day === day && schedule.isActive),
   );
-  const activeScheduleDay = availableScheduleDays.includes(selectedScheduleDay)
-    ? selectedScheduleDay
-    : availableScheduleDays[0];
-  const visibleSchedules = schedules.filter(
-    (schedule) => schedule.day === activeScheduleDay && schedule.isActive,
-  );
-
   const requiredMarker = <span className="text-brand-orange font-bold">*</span>;
 
   const isSchoolLevel = form.educationLevel === "SD" || form.educationLevel === "SMP";
@@ -314,87 +306,105 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
               </div>
 
               {form.programId && schedules.length > 0 && (
-                <div className="space-y-4 border-t border-slate-100 pt-4">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="font-semibold text-slate-900">{requiredMarker} Pilih Jadwal</h3>
-                    <span className="text-xs text-slate-500">Pilih hari, lalu pilih jam</span>
+                <div className="space-y-3 border-t border-slate-100 pt-4">
+                  <div className="flex flex-wrap items-end justify-between gap-2">
+                    <div>
+                      <h3 className="font-semibold text-slate-900">{requiredMarker} Pilih Jadwal</h3>
+                      <p className="mt-1 text-xs text-slate-500">Buka hari yang diinginkan, lalu pilih salah satu jam</p>
+                    </div>
+                    <span className="rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-semibold text-brand-navy">
+                      90 menit / sesi
+                    </span>
                   </div>
 
-                  <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
-                    {availableScheduleDays.map((day) => {
-                      const dayCount = schedules.filter(
+                  <div className="space-y-2">
+                    {availableScheduleDays.map((day, dayIndex) => {
+                      const daySchedules = schedules.filter(
                         (schedule) => schedule.day === day && schedule.isActive,
-                      ).length;
-                      const isSelected = activeScheduleDay === day;
+                      );
+                      const selectedInDay = daySchedules.some(
+                        (schedule) => schedule.id === form.scheduleId,
+                      );
+
                       return (
-                        <button
+                        <details
                           key={day}
-                          type="button"
-                          onClick={() => setSelectedScheduleDay(day)}
-                          disabled={submitting}
-                          aria-pressed={isSelected}
-                          className={cn(
-                            "flex min-h-11 flex-col items-center justify-center rounded-xl border px-1.5 py-2 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand-orange",
-                            isSelected
-                              ? "border-brand-navy bg-brand-navy text-white shadow-sm"
-                              : "border-slate-200 bg-white text-slate-600 hover:border-brand-navy/40 hover:bg-slate-50",
-                          )}
+                          open={dayIndex === 0}
+                          className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-colors open:border-brand-navy/20 open:bg-slate-50/70"
                         >
-                          <span>{day}</span>
-                          <span className={cn("mt-0.5 text-[10px] font-medium", isSelected ? "text-blue-100" : "text-slate-400")}>
-                            {dayCount} slot
-                          </span>
-                        </button>
+                          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 outline-none marker:hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-orange [&::-webkit-details-marker]:hidden">
+                            <span className="flex min-w-0 items-center gap-3">
+                              <span className={cn(
+                                "grid size-9 shrink-0 place-items-center rounded-xl text-xs font-bold",
+                                selectedInDay ? "bg-brand-orange text-white" : "bg-blue-50 text-brand-navy",
+                              )}>
+                                {day.slice(0, 2).toUpperCase()}
+                              </span>
+                              <span className="min-w-0">
+                                <span className="block text-sm font-semibold text-slate-900">{day}</span>
+                                <span className="block text-xs text-slate-500">
+                                  {daySchedules.length} pilihan waktu
+                                  {selectedInDay ? " · Jadwal dipilih" : ""}
+                                </span>
+                              </span>
+                            </span>
+                            <span className="flex shrink-0 items-center gap-2">
+                              {selectedInDay && (
+                                <span className="hidden rounded-full bg-orange-50 px-2 py-1 text-[10px] font-bold text-orange-700 sm:inline-flex">
+                                  Terpilih
+                                </span>
+                              )}
+                              <svg className="size-4 text-slate-500 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                                <path d="m5 7.5 5 5 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            </span>
+                          </summary>
+
+                          <div className="grid grid-cols-1 gap-2 border-t border-slate-100 p-3 sm:grid-cols-2">
+                            {daySchedules.map((schedule) => {
+                              const isSelected = form.scheduleId === schedule.id;
+                              return (
+                                <button
+                                  key={schedule.id}
+                                  type="button"
+                                  onClick={() =>
+                                    update({
+                                      scheduleId: schedule.id,
+                                      learningMethod: schedule.learningMethod,
+                                    })
+                                  }
+                                  disabled={submitting}
+                                  aria-pressed={isSelected}
+                                  className={cn(
+                                    "flex min-h-14 min-w-0 items-center justify-between gap-3 rounded-xl border px-3 py-3 text-left transition-all focus-visible:ring-2 focus-visible:ring-brand-orange",
+                                    isSelected
+                                      ? "border-brand-orange bg-amber-50 shadow-sm"
+                                      : "border-slate-200 bg-white hover:border-brand-navy/30 hover:bg-blue-50/50",
+                                  )}
+                                >
+                                  <span className="min-w-0">
+                                    <span className="block text-sm font-bold tabular-nums text-slate-900">
+                                      {formatTime(schedule.startTime)}–{formatTime(schedule.endTime)}
+                                    </span>
+                                    <span className="mt-0.5 block text-[11px] text-slate-500">
+                                      {schedule.learningMethod}
+                                    </span>
+                                  </span>
+                                  <span className={cn(
+                                    "shrink-0 rounded-lg px-2 py-1 text-[10px] font-semibold",
+                                    isSelected ? "bg-brand-orange text-white" : "bg-slate-100 text-slate-500",
+                                  )}>
+                                    {isSelected ? "Dipilih" : `Kuota ${schedule.capacity}`}
+                                  </span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </details>
                       );
                     })}
                   </div>
 
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-3 sm:p-4">
-                    <div className="mb-3 flex items-center justify-between gap-2">
-                      <div>
-                        <p className="font-semibold text-slate-900">{activeScheduleDay}</p>
-                        <p className="text-xs text-slate-500">{visibleSchedules.length} pilihan waktu tersedia</p>
-                      </div>
-                      <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-semibold text-slate-500 ring-1 ring-slate-200">
-                        90 menit / sesi
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
-                      {visibleSchedules.map((schedule) => {
-                        const isSelected = form.scheduleId === schedule.id;
-                        return (
-                          <button
-                            key={schedule.id}
-                            type="button"
-                            onClick={() =>
-                              update({
-                                scheduleId: schedule.id,
-                                learningMethod: schedule.learningMethod,
-                              })
-                            }
-                            disabled={submitting}
-                            aria-pressed={isSelected}
-                            className={cn(
-                              "flex min-h-[76px] min-w-0 flex-col items-start justify-center rounded-xl border p-3 text-left transition-all focus-visible:ring-2 focus-visible:ring-brand-orange sm:min-h-[84px] sm:p-4",
-                              isSelected
-                                ? "border-brand-orange bg-amber-50 shadow-sm"
-                                : "border-slate-200 bg-white hover:border-brand-orange/50 hover:shadow-sm",
-                            )}
-                          >
-                            <span className="text-sm font-bold tabular-nums text-slate-900">
-                              {formatTime(schedule.startTime)}–{formatTime(schedule.endTime)}
-                            </span>
-                            <span className="mt-1 text-[11px] text-slate-500">
-                              {schedule.learningMethod}
-                            </span>
-                            <span className={cn("mt-1 text-[10px] font-medium", isSelected ? "text-brand-orange" : "text-slate-400")}>
-                              {isSelected ? "Jadwal dipilih" : `Kuota: ${schedule.capacity}`}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
                   {schedules.some((schedule) => !schedule.isActive) && (
                     <p className="rounded-lg bg-amber-50 p-2 text-xs text-amber-700">
                       Beberapa jadwal tidak tersedia saat ini.
