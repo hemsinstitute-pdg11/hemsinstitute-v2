@@ -91,6 +91,8 @@ export const participants = pgTable(
     phone: varchar("phone", { length: 30 }).notNull(),
     email: varchar("email", { length: 150 }),
     birthDate: date("birth_date"),
+    birthPlace: varchar("birth_place", { length: 120 }),
+    domicileAddress: text("domicile_address"),
     educationLevel: varchar("education_level", { length: 50 }).notNull(),
     schoolName: varchar("school_name", { length: 150 }),
     guardianName: varchar("guardian_name", { length: 150 }),
@@ -122,6 +124,11 @@ export const registrations = pgTable(
     status: varchar("status", { length: 30 }).notNull().default("new"),
     learningMethod: varchar("learning_method", { length: 100 }).notNull(),
     consentAt: timestamp("consent_at", { withTimezone: true }),
+    sourceChannel: varchar("source_channel", { length: 120 }),
+    registrationPaymentStatus: varchar("registration_payment_status", { length: 24 }).notNull().default("pending"),
+    registrationPaymentProofUrl: text("registration_payment_proof_url"),
+    paymentReference: text("payment_reference"),
+    registrationEmail: varchar("registration_email", { length: 255 }),
     createdAt: timestamp("created_at", { withTimezone: true })
       .defaultNow()
       .notNull(),
