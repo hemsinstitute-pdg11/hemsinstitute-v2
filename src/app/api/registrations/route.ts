@@ -7,7 +7,7 @@ import {
   programs,
   courseSchedules,
 } from "@/db/schema";
-import { eq, and, sql, count, lte, gte } from "drizzle-orm";
+import { eq, and, sql, count, lte, gte, inArray } from "drizzle-orm";
 import { z } from "zod";
 import { registrationSchema } from "@/lib/validations";
 
@@ -167,7 +167,7 @@ export async function POST(request: Request) {
         .from(courseSchedules)
         .where(
           and(
-            sql`${courseSchedules.id} = ANY(ARRAY[${sql.join(selectedScheduleIds.map((id) => sql`${id}::uuid`), sql`, `)}]::uuid[])`,
+            inArray(courseSchedules.id, selectedScheduleIds),
             eq(courseSchedules.isActive, true),
             eq(courseSchedules.programId, data.programId),
           ),
