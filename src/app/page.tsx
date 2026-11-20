@@ -7,13 +7,12 @@ import { eq, and, count } from "drizzle-orm";
 import { ArrowRight, ChevronRight, Play, Star, ShieldCheck, Users, Layers } from "lucide-react";
 import Link from "next/link";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Beranda - Hem's Institute Lembaga Pelatihan Padang",
+  title: "Beranda",
   description:
     "Kembangkan keterampilan Anda dan bangun masa depan Anda dengan program bahasa asing, multimedia, dan keterampilan profesional di Hem's Institute Padang. Daftar sekarang.",
   openGraph: {
