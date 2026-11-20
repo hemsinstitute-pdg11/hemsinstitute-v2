@@ -83,7 +83,7 @@ button, a { touch-action: manipulation; }
 
 
 /* Shared form controls: consistent, accessible and touch-friendly. */
-input:not([type="checkbox]):not([type="radio"]):not([type="range"]),
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
 select,
 textarea {
   min-height: 44px;
