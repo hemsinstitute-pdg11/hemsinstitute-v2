@@ -53,6 +53,8 @@ export const programs = pgTable(
     learningMethod: varchar("learning_method", { length: 100 }),
     imageUrl: text("image_url"),
     isActive: boolean("is_active").default(true).notNull(),
+    isFeatured: boolean("is_featured").default(false).notNull(),
+    displayOrder: integer("display_order").default(100).notNull(),
     createdAt: timestamp("created_at", { withTimezone: true })
       .defaultNow()
       .notNull(),
