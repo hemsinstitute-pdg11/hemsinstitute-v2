@@ -280,7 +280,7 @@ export default async function HomePage() {
                 </p>
                 <div className="mt-auto flex items-baseline gap-1 pt-3 border-t border-slate-100">
                   <span className="font-heading font-bold text-brand-navy">
-                    {p.price == null ? "Hubungi Admin untuk Informasi" : `Rp ${Number(p.price).toLocaleString("id-ID")}`}
+                    {p.price == null ? "Hubungi Admin untuk Informasi" : `Rp ${Number(p.price).toLocaleString("id-ID")}${p.slug === "english-class" ? " / bulan" : ""}`}
                   </span>
                 </div>
               </Card>
