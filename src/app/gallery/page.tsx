@@ -13,7 +13,7 @@ export default function GalleryPage() {
   return (
     <>
       <PageHero eyebrow="Cerita Kegiatan Kami" title="Galeri Hem's Institute" description="Dokumentasi kegiatan belajar, pelatihan, dan acara instansi di Hem's Institute." icon={<Camera className="size-3.5" />} />
-      <section className="bg-slate-50 py-14 sm:py-20">
+      <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-9 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-orange">Dokumentasi</p><h2 className="mt-2 font-heading text-2xl font-bold text-slate-900 sm:text-3xl">Kegiatan pembelajaran</h2><p className="mt-2 max-w-xl text-sm leading-6 text-slate-600">Galeri foto resmi akan ditampilkan setelah dokumentasi kegiatan tersedia.</p></div>
