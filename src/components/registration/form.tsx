@@ -351,9 +351,11 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
               )}
 
               <div className="mt-6 space-y-3">
-                <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                  {requiredMarker} Metode Belajar
-                </label>
+                <div className="flex items-center justify-between gap-3">
+                  <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
+                    {requiredMarker} Metode Belajar
+                  </label>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {["Tatap muka", "Online", "Gabungan"].map((method) => (
                     <button
