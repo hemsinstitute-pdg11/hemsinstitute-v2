@@ -129,13 +129,6 @@ export default async function HomePage() {
                     <p className="mt-1 text-xs text-blue-100">Aplikasi Perkantoran dan Animasi</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-emerald-300/15 text-lg">↗</span>
-                  <div>
-                    <p className="font-semibold text-white">Keterampilan Profesional</p>
-                    <p className="mt-1 text-xs text-blue-100">Kompetensi untuk dunia kerja</p>
-                  </div>
-                </div>
               </div>
               <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5 text-xs text-blue-100">
                 <span>Padang, Sumatera Barat</span>
@@ -282,6 +275,7 @@ export default async function HomePage() {
                     {p.name}
                   </h3>
                 </Link>
+                {p.slug === "english-class" && <span className="inline-flex w-fit items-center rounded-lg border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-bold text-orange-700">Program Unggulan</span>}
                 {p.slug === "english-class" && <span className="inline-flex w-fit items-center rounded-lg border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-bold text-orange-700">Program Unggulan</span>}
                 <p className="mt-3 text-sm text-slate-600 line-clamp-2">
                   {p.description}
