@@ -8,8 +8,7 @@ export function CursorEffect() {
 
   useEffect(() => {
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (!finePointer.matches || reducedMotion.matches) return;
+    if (!finePointer.matches) return;
 
     const ring = ringRef.current;
     const dot = dotRef.current;
