@@ -39,7 +39,7 @@ export default async function RegistrationSuccessPage({ searchParams }: { search
   const reg = await getRegistration(code);
   if (!reg) notFound();
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6285376534343";
   const message = encodeURIComponent(
     `Halo Admin Hem's Institute.\n\nSaya telah melakukan pendaftaran melalui website Hem's Institute.\n\nNomor Registrasi: ${reg.registrationCode}\nNama: ${reg.fullName}\nProgram: ${reg.programName}\nJadwal: Akan dikonfirmasi admin\nMetode Belajar: ${reg.learningMethod}\n\nMohon informasi mengenai proses selanjutnya.\n\nTerima kasih.`,
   );
@@ -72,7 +72,7 @@ export default async function RegistrationSuccessPage({ searchParams }: { search
               <div className="mt-4 space-y-4">
                 <div className="flex gap-3"><span className="grid size-10 shrink-0 place-items-center rounded-xl bg-orange-50 text-brand-orange"><Clock className="size-5" /></span><div><p className="font-semibold text-slate-900">Tunggu konfirmasi admin</p><p className="mt-1 text-sm leading-6 text-slate-600">Admin akan memverifikasi data pendaftaran dan menginformasikan jadwal pembelajaran.</p></div></div>
                 <div className="flex gap-3"><span className="grid size-10 shrink-0 place-items-center rounded-xl bg-blue-50 text-brand-navy"><Smartphone className="size-5" /></span><div><p className="font-semibold text-slate-900">Konfirmasi melalui WhatsApp</p><p className="mt-1 text-sm leading-6 text-slate-600">Kirim pesan kepada admin dengan menyertakan nomor registrasi Anda.</p></div></div>
-                <div className="flex gap-3"><span className="grid size-10 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-600"><MapPin className="size-5" /></span><div><p className="font-semibold text-slate-900">Kunjungi Hem's Institute</p><p className="mt-1 text-sm leading-6 text-slate-600">Anda juga dapat datang ke kantor kami di Padang, Sumatera Barat pada jam operasional.</p></div></div>
+                <div className="flex gap-3"><span className="grid size-10 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-600"><MapPin className="size-5" /></span><div><p className="font-semibold text-slate-900">Kunjungi Hem's Institute</p><p className="mt-1 text-sm leading-6 text-slate-600">Anda juga dapat datang ke kantor kami di Jl. Azizi No.32, Andalas, Padang Timur, Kota Padang pada Senin - Minggu, 09.00 - 20.30 WIB.</p></div></div>
               </div>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
