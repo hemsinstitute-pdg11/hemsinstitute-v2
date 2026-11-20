@@ -10,7 +10,7 @@ import { CheckCircle2, Clock, MapPin, Smartphone, ArrowLeft, MessageCircle } fro
 import { formatIdDate } from "@/lib/date";
 
 export const metadata: Metadata = {
-  title: "Pendaftaran Berhasil - Hem's Institute",
+  title: "Pendaftaran Berhasil",
   description: "Konfirmasi pendaftaran program pelatihan di Hem's Institute.",
   robots: { index: false, follow: false },
 };
