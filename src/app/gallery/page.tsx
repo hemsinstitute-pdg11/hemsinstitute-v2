@@ -4,7 +4,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { Image as ImageIcon, Camera, Users, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Galeri - Hem's Institute",
+  title: "Galeri",
   description: "Dokumentasi kegiatan belajar, pelatihan, dan acara di Hem's Institute Padang.",
 };
 
