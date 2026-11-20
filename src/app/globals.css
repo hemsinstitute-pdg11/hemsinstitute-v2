@@ -405,3 +405,37 @@ textarea::placeholder {
     backdrop-filter: none !important;
   }
 }
+
+
+/* Soft active-status pulse for the "Terpercaya sejak 2011" indicator. */
+.status-dot {
+  position: relative;
+  flex: none;
+  box-shadow: 0 0 0 0 rgb(242 140 40 / 0.62);
+  animation: status-dot-pulse 1.8s ease-out infinite;
+}
+
+@keyframes status-dot-pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgb(242 140 40 / 0.58);
+  }
+  65% {
+    opacity: 0.88;
+    transform: scale(1.12);
+    box-shadow: 0 0 0 7px rgb(242 140 40 / 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgb(242 140 40 / 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none;
+    box-shadow: 0 0 0 3px rgb(242 140 40 / 0.16);
+  }
+}
