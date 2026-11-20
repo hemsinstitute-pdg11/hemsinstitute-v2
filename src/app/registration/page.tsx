@@ -31,7 +31,7 @@ export default async function RegistrationPage({ searchParams }: { searchParams:
   return (
     <>
       <PageHero eyebrow="Mulai Perjalanan Belajar" title="Pendaftaran Online" description="Lengkapi data diri dan pilih program pelatihan. Setelah pendaftaran berhasil, Anda akan menerima nomor registrasi untuk konfirmasi dengan admin." icon={<ClipboardCheck className="size-3.5" />} compact />
-      <section className="bg-slate-50 py-10 sm:py-16">
+      <section className="grid-surface bg-slate-50 py-10 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-8 grid max-w-4xl gap-3 sm:grid-cols-3">
             <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4"><span className="grid size-10 shrink-0 place-items-center rounded-xl bg-blue-50 text-brand-navy"><ClipboardCheck className="size-5" /></span><div><p className="text-sm font-bold text-slate-900">Isi Formulir</p><p className="text-xs text-slate-500">Lengkapi data peserta</p></div></div>
