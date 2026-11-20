@@ -53,7 +53,7 @@ export default async function ProgramsPage({ searchParams }: { searchParams: Pro
   return (
     <>
       <PageHero eyebrow="Temukan Kelas yang Tepat" title="Program & Kursus" description="Pilih program pelatihan sesuai minat, usia, dan tujuan pembelajaran Anda. Jelajahi pilihan bahasa asing, multimedia, dan keterampilan profesional." icon={<BookOpen className="size-3.5" />} />
-      <section className="bg-slate-50 py-10 sm:py-14">
+      <section className="grid-surface bg-slate-50 py-10 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <form action="/programs" method="GET" className="rounded-3xl border border-slate-200 bg-white p-5 shadow-card sm:p-7">
             <div className="mb-5 flex items-center gap-3">
@@ -96,7 +96,7 @@ export default async function ProgramsPage({ searchParams }: { searchParams: Pro
           </form>
         </div>
       </section>
-      <section className="bg-white py-14 sm:py-20">
+      <section className="grid-surface bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-orange">Katalog Pelatihan</p><h2 className="mt-2 font-heading text-2xl font-bold text-slate-900 sm:text-3xl">Daftar Program <span className="text-brand-orange">({items.length})</span></h2><p className="mt-2 text-sm text-slate-500">Program aktif yang tersedia untuk pendaftaran.</p></div>
