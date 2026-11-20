@@ -46,7 +46,7 @@ export default async function RegistrationSuccessPage({ searchParams }: { search
   const whatsappHref = whatsappNumber ? `https://wa.me/${whatsappNumber}?text=${message}` : null;
 
   return (
-    <section className="bg-slate-50 px-4 py-12 sm:py-20">
+    <section className="grid-surface bg-slate-50 px-4 py-12 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Card className="overflow-hidden p-0">
           <div className="relative overflow-hidden bg-[#102D53] px-6 py-10 text-center text-white sm:px-10">
