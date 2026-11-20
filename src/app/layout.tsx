@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/navbar";
+import { CursorEffect } from "@/components/ui/cursor-effect";
 
 const siteName = "Hem's Institute";
 const siteDescription =
@@ -92,6 +93,7 @@ export default function RootLayout({
         )}
       </head>
       <body className="bg-[#F1F5F9] text-slate-900 antialiased min-h-screen flex flex-col">
+        <CursorEffect />
         <Navbar />
         <main className="page-enter flex-grow">{children}</main>
         <Footer />
