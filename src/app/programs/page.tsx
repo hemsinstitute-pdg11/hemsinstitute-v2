@@ -8,7 +8,7 @@ import { Search, SlidersHorizontal, BookOpen, Users, Clock3, GraduationCap } fro
 
 export const metadata: Metadata = {
   title: "Program & Kursus",
-  description: "Jelajahi katalog program pelatihan Hem's Institute: bahasa asing, multimedia & digital, dan keterampilan profesional di Padang.",
+  description: "Jelajahi tujuh program Hem's Institute dalam Language Class dan Computer Class, dengan English Class sebagai program unggulan.",
 };
 
 export const dynamic = "force-dynamic";
@@ -52,7 +52,7 @@ export default async function ProgramsPage({ searchParams }: { searchParams: Pro
 
   return (
     <>
-      <PageHero eyebrow="Temukan Kelas yang Tepat" title="Program & Kursus" description="Pilih program pelatihan sesuai minat, usia, dan tujuan pembelajaran Anda. Jelajahi pilihan bahasa asing, multimedia, dan keterampilan profesional." icon={<BookOpen className="size-3.5" />} />
+      <PageHero eyebrow="Temukan Kelas yang Tepat" title="Program & Kursus" description="Pilih kelas bahasa atau komputer sesuai minat dan tujuan belajar Anda. English Class menjadi program unggulan Hem’s Institute." icon={<BookOpen className="size-3.5" />} />
       <section className="grid-surface bg-slate-50 py-10 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <form action="/programs" method="GET" className="rounded-3xl border border-slate-200 bg-white p-5 shadow-card sm:p-7">
@@ -60,7 +60,7 @@ export default async function ProgramsPage({ searchParams }: { searchParams: Pro
               <span className="grid size-11 place-items-center rounded-xl bg-orange-50 text-brand-orange"><SlidersHorizontal className="size-5" /></span>
               <div><h2 className="font-heading text-lg font-bold text-slate-900">Temukan Program</h2><p className="text-xs text-slate-500">Gunakan pencarian dan filter untuk mempersempit pilihan.</p></div>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_auto]">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_auto]">
               <label className="flex min-h-12 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 transition focus-within:border-brand-orange focus-within:ring-2 focus-within:ring-orange-100">
                 <Search className="size-4 shrink-0 text-slate-400" />
                 <input name="q" type="search" placeholder="Cari nama program..." defaultValue={q ?? ""} className="w-full bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400" />
@@ -70,18 +70,6 @@ export default async function ProgramsPage({ searchParams }: { searchParams: Pro
                 <select name="category" defaultValue={category ?? ""} className="w-full bg-transparent text-sm text-slate-800 outline-none">
                   <option value="">Semua kategori</option>
                   {categories.map((c) => <option key={c.id} value={c.slug}>{c.name}</option>)}
-                </select>
-              </label>
-              <label className="flex min-h-12 flex-col justify-center rounded-xl border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-500 focus-within:border-brand-orange">
-                Target peserta
-                <select name="audience" defaultValue={audience ?? ""} className="w-full bg-transparent text-sm text-slate-800 outline-none">
-                  <option value="">Semua peserta</option><option value="SD">SD</option><option value="SMP">SMP</option><option value="SMA">SMA</option><option value="Umum">Umum</option>
-                </select>
-              </label>
-              <label className="flex min-h-12 flex-col justify-center rounded-xl border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-500 focus-within:border-brand-orange">
-                Metode belajar
-                <select name="method" defaultValue={method ?? ""} className="w-full bg-transparent text-sm text-slate-800 outline-none">
-                  <option value="">Semua metode</option><option value="Offline">Offline</option><option value="Online">Online</option><option value="Hybrid">Hybrid</option>
                 </select>
               </label>
               <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-orange px-5 text-sm font-bold text-white shadow-sm transition hover:bg-[#D97706] focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2">Cari <Search className="size-4" /></button>
