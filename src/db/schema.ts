@@ -123,6 +123,7 @@ export const registrations = pgTable(
       .notNull(),
     scheduleId: uuid("schedule_id")
       .references(() => courseSchedules.id, { onDelete: "set null" }),
+    scheduleIds: uuid("schedule_ids").array().notNull().default([]),
     status: varchar("status", { length: 30 }).notNull().default("new"),
     learningMethod: varchar("learning_method", { length: 100 }).notNull(),
     consentAt: timestamp("consent_at", { withTimezone: true }),
