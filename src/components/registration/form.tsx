@@ -429,8 +429,8 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                     {requiredMarker} Metode Belajar
                   </label>
                 </div>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-                  {["Tatap muka", "Online", "Gabungan"].map((method) => (
+                <div className="grid grid-cols-2 gap-3">
+                  {["Tatap Muka", "Online"].map((method) => (
                     <button
                       key={method}
                       type="button"
