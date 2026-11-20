@@ -42,10 +42,10 @@ export function Footer() {
           <div>
             <h2 className="mb-5 text-xs font-bold uppercase tracking-[0.16em] text-orange-300">Informasi Kontak</h2>
             <ul className="space-y-4 text-sm text-slate-300">
-              <li className="flex items-start gap-3"><MapPin className="mt-0.5 size-4 shrink-0 text-orange-300" /><span>Padang, Sumatera Barat, Indonesia</span></li>
-              <li className="flex items-start gap-3"><Phone className="mt-0.5 size-4 shrink-0 text-orange-300" /><span>WhatsApp Admin: <strong className="font-semibold text-white">628xxxxxxxxxx</strong></span></li>
-              <li className="flex items-start gap-3"><Mail className="mt-0.5 size-4 shrink-0 text-orange-300" /><span>info@hemsinstitute.ac.id</span></li>
-              <li className="flex items-start gap-3"><Clock3 className="mt-0.5 size-4 shrink-0 text-orange-300" /><span>Senin - Jumat, 08.00 - 16.00 WIB</span></li>
+              <li className="flex items-start gap-3"><MapPin className="mt-0.5 size-4 shrink-0 text-orange-300" /><a className="transition-colors hover:text-orange-200" href="https://www.google.com/maps/search/?api=1&query=Jl.+Azizi+No.32%2C+Andalas%2C+Padang+Timur%2C+Kota+Padang%2C+Sumatera+Barat" target="_blank" rel="noopener noreferrer">Hem’s Institute Padang<br />Jl. Azizi No.32, Andalas, Kec. Padang Timur, Kota Padang, Sumatera Barat</a></li>
+              <li className="flex items-start gap-3"><Phone className="mt-0.5 size-4 shrink-0 text-orange-300" /><a href="https://wa.me/6285376534343" className="transition-colors hover:text-orange-200">WhatsApp: <strong className="font-semibold text-white">085376534343</strong></a></li>
+              <li className="flex items-start gap-3"><Mail className="mt-0.5 size-4 shrink-0 text-orange-300" /><a href="mailto:hems.institute@gmail.com" className="transition-colors hover:text-orange-200">hems.institute@gmail.com</a></li>
+              <li className="flex items-start gap-3"><Clock3 className="mt-0.5 size-4 shrink-0 text-orange-300" /><span>Senin - Minggu, 09.00 - 20.30 WIB</span></li>
             </ul>
           </div>
 
@@ -56,9 +56,9 @@ export function Footer() {
               informasi program dan pendaftaran terbaru.
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300">Instagram <ArrowUpRight className="size-3.5" /></span>
-              <span className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300">TikTok <ArrowUpRight className="size-3.5" /></span>
-              <span className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300">YouTube <ArrowUpRight className="size-3.5" /></span>
+              <a href="https://www.instagram.com/hems.institutepadang/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300 transition-colors hover:bg-white/10 hover:text-white">Instagram <ArrowUpRight className="size-3.5" /></a>
+              <a href="https://www.tiktok.com/@hems.institute" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300 transition-colors hover:bg-white/10 hover:text-white">TikTok <ArrowUpRight className="size-3.5" /></a>
+              
             </div>
           </div>
         </div>
