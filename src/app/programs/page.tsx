@@ -7,7 +7,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { Search, SlidersHorizontal, BookOpen, Users, Clock3, GraduationCap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Program & Kursus - Hem's Institute",
+  title: "Program & Kursus",
   description: "Jelajahi katalog program pelatihan Hem's Institute: bahasa asing, multimedia & digital, dan keterampilan profesional di Padang.",
 };
 
