@@ -69,7 +69,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-[#102D53]">
+      <section className="grid-surface relative isolate overflow-hidden bg-[#102D53]">
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_15%_20%,rgba(242,140,40,0.22),transparent_34%),radial-gradient(ellipse_at_85%_75%,rgba(96,165,250,0.18),transparent_38%),linear-gradient(135deg,#102D53_0%,#173B70_55%,#0F2B4E_100%)]" />
         <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
@@ -146,7 +146,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 sm:py-20">
+      <section className="grid-surface bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 mb-3">Tentang Kami</h2>
@@ -199,7 +199,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-14 sm:py-20">
+      <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 mb-3">Kategori Program Unggulan</h2>
@@ -245,7 +245,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 sm:py-20">
+      <section className="grid-surface bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/2">
@@ -297,7 +297,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-14 sm:py-20">
+      <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
             <div className="space-y-6">
@@ -333,7 +333,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-t border-slate-200">
+      <section className="grid-surface py-16 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900">Testimonial</h2>
@@ -355,7 +355,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#F1F5F9] border-t border-slate-200">
+      <section className="grid-surface py-16 bg-[#F1F5F9] border-t border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900">Galeri Kegiatan Belajar</h2>
@@ -374,7 +374,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#102D53] py-16 sm:py-20">
+      <section className="grid-surface bg-[#102D53] py-16 sm:py-20">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-6">
             Siap Mengembangkan Keterampilan Anda?
