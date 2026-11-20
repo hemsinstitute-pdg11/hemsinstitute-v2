@@ -1,119 +1,69 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { Card } from "@/components/ui/card";
-import { MapPin, Smartphone, Mail, Clock } from "lucide-react";
+import { PageHero } from "@/components/ui/page-hero";
+import { MapPin, Smartphone, Mail, Clock, ArrowRight, Instagram } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Kontak - Hem's Institute",
-  description:
-    "Hubungi Hem's Institute Padang melalui WhatsApp, email, atau kunjungi kami di lokasi kami di Padang, Sumatera Barat.",
+  description: "Hubungi Hem's Institute Padang melalui WhatsApp, email, atau kunjungi kami di Padang, Sumatera Barat.",
 };
 
 export default function ContactPage() {
   return (
     <>
-      <section className="py-16 bg-white border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <MapPin className="size-6 text-brand-orange" />
-              <h1 className="font-heading font-bold text-3xl md:text-4xl text-slate-900">
-                Kontak Kami
-              </h1>
-            </div>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Hubungi kami untuk informasi program, jadwal, dan pendaftaran.
-              Kami siap membantu Anda.
-            </p>
+      <PageHero
+        eyebrow="Kami Siap Membantu"
+        title="Mari Terhubung dengan Hem's Institute"
+        description="Hubungi kami untuk informasi program, jadwal, dan pendaftaran. Tim kami siap membantu Anda menemukan program yang tepat."
+        icon={<MapPin className="size-3.5" />}
+      />
+      <section className="bg-slate-50 py-14 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <div className="grid gap-5">
+            <Card className="p-6 sm:p-7">
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.16em] text-brand-orange">Informasi Kontak</p>
+              <h2 className="mb-6 font-heading text-xl font-bold text-slate-900 sm:text-2xl">Kunjungi atau hubungi kami</h2>
+              <div className="space-y-5">
+                <div className="flex gap-4">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-orange-50 text-brand-orange"><MapPin className="size-5" /></span>
+                  <div><h3 className="font-semibold text-slate-900">Alamat</h3><p className="mt-1 text-sm leading-6 text-slate-600">Padang, Sumatera Barat, Indonesia</p></div>
+                </div>
+                <div className="flex gap-4">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-orange-50 text-brand-orange"><Smartphone className="size-5" /></span>
+                  <div><h3 className="font-semibold text-slate-900">WhatsApp Admin</h3><p className="mt-1 text-sm text-brand-navy">628xxxxxxxxxx</p></div>
+                </div>
+                <div className="flex gap-4">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-orange-50 text-brand-orange"><Mail className="size-5" /></span>
+                  <div><h3 className="font-semibold text-slate-900">Email</h3><p className="mt-1 text-sm text-slate-600">info@hemsinstitute.ac.id</p></div>
+                </div>
+              </div>
+            </Card>
+            <Card className="p-6 sm:p-7">
+              <div className="mb-5 flex items-center gap-3">
+                <span className="grid size-11 place-items-center rounded-xl bg-blue-50 text-brand-navy"><Clock className="size-5" /></span>
+                <h2 className="font-heading text-xl font-bold text-slate-900">Jam Operasional</h2>
+              </div>
+              <dl className="space-y-3 text-sm">
+                <div className="flex justify-between gap-4 border-b border-slate-100 pb-3"><dt className="text-slate-600">Senin - Jumat</dt><dd className="font-semibold text-slate-900">08.00 - 16.00 WIB</dd></div>
+                <div className="flex justify-between gap-4 border-b border-slate-100 pb-3"><dt className="text-slate-600">Sabtu</dt><dd className="font-semibold text-slate-900">08.00 - 12.00 WIB</dd></div>
+                <div className="flex justify-between gap-4"><dt className="text-slate-600">Minggu</dt><dd className="font-semibold text-slate-900">Tutup</dd></div>
+              </dl>
+            </Card>
           </div>
-
-          <div className="grid lg:grid-cols-2 gap-10">
-            <div className="space-y-6">
-              <Card padded>
-                <h2 className="font-heading font-bold text-xl text-slate-900 mb-4">Alamat Kantor</h2>
-                <div className="flex items-start gap-3 mb-4">
-                  <MapPin className="size-5 text-brand-orange shrink-0 mt-0.5" />
-                  <p className="text-slate-600 leading-relaxed">
-                    Padang, Sumatera Barat, Indonesia
-                  </p>
-                </div>
-                <div className="flex items-start gap-3 mb-4">
-                  <Smartphone className="size-5 text-brand-orange shrink-0 mt-0.5" />
-                  <p className="text-slate-600 leading-relaxed">
-                    WhatsApp Admin:
-                    <span className="text-brand-navy font-semibold block mt-1">
-                      628xxxxxxxxxx
-                    </span>
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="size-5 text-brand-orange shrink-0 mt-0.5" />
-                  <p className="text-slate-600 leading-relaxed">
-                    info@hemsinstitute.ac.id
-                  </p>
-                </div>
-              </Card>
-
-              <Card padded>
-                <h2 className="font-heading font-bold text-xl text-slate-900 mb-4">Jam Operasional</h2>
-                <ul className="space-y-3 text-slate-600 text-sm">
-                  <li className="flex justify-between border-b border-slate-100 pb-2">
-                    <span>Senin - Jumat</span>
-                    <span className="font-medium text-slate-900">08.00 - 16.00 WIB</span>
-                  </li>
-                  <li className="flex justify-between border-b border-slate-100 pb-2">
-                    <span>Sabtu</span>
-                    <span className="font-medium text-slate-900">08.00 - 12.00 WIB</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Minggu</span>
-                    <span className="font-medium text-slate-900">Tutup</span>
-                  </li>
-                </ul>
-              </Card>
-
-              <Card padded>
-                <h2 className="font-heading font-bold text-xl text-slate-900 mb-4">Ikuti Kami</h2>
-                <p className="text-slate-600 mb-4">
-                  Dapatkan informasi terbaru mengenai program dan pendaftaran
-                  melalui media sosial kami.
-                </p>
-                <div className="flex gap-3">
-                  <a href="#" className="w-11 h-11 rounded-lg bg-brand-navy flex items-center justify-center text-white text-sm font-medium hover:bg-[#0E2E53] transition-colors" aria-label="Instagram">
-                    IG
-                  </a>
-                </div>
-              </Card>
-            </div>
-
-            <div className="lg:col-span-2">
-              <Card padded={false}>
-                <div className="aspect-video rounded-2xl border border-slate-200 bg-slate-200 flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                    <MapPin className="size-16 text-slate-400 mb-3" />
-                    <p className="text-slate-500 text-sm font-medium">
-                      Lokasi kami akan segera ditampilkan melalui Google Maps
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-[#F1F5F9]">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="rounded-2xl border border-slate-200 bg-white p-8 md:p-12 text-center shadow-soft">
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 mb-4">
-              Siap Mendaftar?
-            </h2>
-            <p className="text-slate-600 mb-8 max-w-xl mx-auto">
-              Isi formulir pendaftaran online dan kami akan segera
-              menghubungi Anda melalui WhatsApp.
-            </p>
-            <a href="/registration" className="inline-block rounded-xl bg-brand-navy px-8 py-3 text-sm font-bold text-white hover:bg-[#0E2E53] transition-colors">
-              Daftar Sekarang
-            </a>
+          <div className="grid gap-5">
+            <Card padded={false} className="overflow-hidden">
+              <div className="flex min-h-[320px] flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,rgba(242,140,40,0.14),transparent_55%),linear-gradient(135deg,#eff6ff,#f8fafc)] p-8 text-center sm:min-h-[400px]">
+                <span className="mb-4 grid size-16 place-items-center rounded-2xl bg-white text-brand-orange shadow-card"><MapPin className="size-8" /></span>
+                <h2 className="font-heading text-xl font-bold text-slate-900">Hem's Institute</h2>
+                <p className="mt-2 max-w-sm text-sm leading-6 text-slate-600">Padang, Sumatera Barat, Indonesia</p>
+                <p className="mt-5 max-w-sm text-xs leading-5 text-slate-500">Peta lokasi detail akan ditambahkan setelah alamat kantor lengkap tersedia.</p>
+              </div>
+            </Card>
+            <Card className="flex flex-col items-start justify-between gap-5 bg-[#102D53] p-6 text-white sm:flex-row sm:items-center sm:p-8">
+              <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-200">Mulai langkah Anda</p><h2 className="mt-2 font-heading text-xl font-bold">Siap memilih program?</h2><p className="mt-2 text-sm leading-6 text-blue-100">Lihat pilihan kursus dan daftarkan diri secara online.</p></div>
+              <Link href="/registration" className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl bg-brand-orange px-5 text-sm font-bold text-white transition hover:bg-[#D97706] focus-visible:ring-2 focus-visible:ring-white">Daftar Sekarang <ArrowRight className="size-4" /></Link>
+            </Card>
           </div>
         </div>
       </section>
