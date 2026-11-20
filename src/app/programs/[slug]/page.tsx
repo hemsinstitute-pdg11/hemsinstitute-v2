@@ -164,13 +164,13 @@ export default async function ProgramDetailPage({
                         <td className="py-2">{program.courseLevel}</td>
                       </tr>
                       <tr>
-                        <td className="py-2 font-medium text-slate-900">Durasi</td>
+                        <td className="py-2 font-medium text-slate-900">Durasi per Pertemuan</td>
                         <td className="py-2">{program.duration}</td>
                       </tr>
                       <tr>
                         <td className="py-2 font-medium text-slate-900">Jumlah Pertemuan</td>
                         <td className="py-2">
-                          {program.totalMeetings ?? "-"}
+                          {program.totalMeetings ? `${program.totalMeetings}x pertemuan` : "-"}
                         </td>
                       </tr>
                       <tr>
