@@ -5,7 +5,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { MapPin, Smartphone, Mail, Clock, ArrowRight, Instagram } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Kontak - Hem's Institute",
+  title: "Kontak",
   description: "Hubungi Hem's Institute Padang melalui WhatsApp, email, atau kunjungi kami di Padang, Sumatera Barat.",
 };
 
