@@ -282,6 +282,7 @@ export default async function HomePage() {
                     {p.name}
                   </h3>
                 </Link>
+                {p.slug === "english-class" && <span className="inline-flex w-fit items-center rounded-lg border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-bold text-orange-700">Program Unggulan</span>}
                 <p className="mt-3 text-sm text-slate-600 line-clamp-2">
                   {p.description}
                 </p>
