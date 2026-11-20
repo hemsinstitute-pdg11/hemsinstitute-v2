@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFloat } from "@/components/layout/navbar";
 import { BookOpen, Building2, GraduationCap, Users, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -237,9 +235,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppFloat />
     </>
   );
 }
