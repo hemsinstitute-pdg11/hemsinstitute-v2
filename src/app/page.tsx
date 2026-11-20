@@ -69,34 +69,34 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="grid-surface-dark relative isolate overflow-hidden bg-[#102D53]">
+      <section className="grid-surface-dark mobile-hero relative isolate overflow-hidden bg-[#102D53]">
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_15%_20%,rgba(242,140,40,0.22),transparent_34%),radial-gradient(ellipse_at_85%_75%,rgba(96,165,250,0.18),transparent_38%),linear-gradient(135deg,#102D53_0%,#173B70_55%,#0F2B4E_100%)]" />
         <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
+        <div className="mobile-hero-inner mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
           <div className="max-w-2xl">
             <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-300/30 bg-orange-300/10 px-4 py-2 text-xs font-bold tracking-[0.14em] text-orange-200">
               <span className="size-1.5 rounded-full bg-brand-orange" />
               TERPERCAYA SEJAK 2011
             </span>
-            <h1 className="mb-6 font-heading text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-white">
+            <h1 className="mobile-hero-title mb-6 font-heading text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-white">
               Develop Your Skills.
               <span className="mt-2 block bg-gradient-to-r from-orange-200 via-orange-400 to-amber-300 bg-clip-text text-transparent">
                 Build Your Future.
               </span>
             </h1>
-            <p className="mb-9 max-w-xl text-base leading-8 text-blue-100 sm:text-lg">
+            <p className="mobile-hero-description mb-9 max-w-xl text-base leading-8 text-blue-100 sm:text-lg">
               Kembangkan kemampuan Anda melalui Language Class dan Computer Class bersama Hem's Institute. English Class menjadi program unggulan kami.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/programs"
-                className="interactive-lift inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-orange px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-950/20 hover:bg-[#D97706] focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy"
+                className="mobile-hero-cta interactive-lift inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-orange px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-950/20 hover:bg-[#D97706] focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy"
               >
                 Jelajahi Program <ArrowRight className="size-4" />
               </Link>
               <Link
                 href="/registration"
-                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy"
+                className="mobile-glass-secondary inline-flex min-h-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy"
               >
                 Daftar Sekarang
               </Link>
@@ -105,7 +105,7 @@ export default async function HomePage() {
 
           <div className="relative mx-auto w-full max-w-md lg:ml-auto">
             <div aria-hidden="true" className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-orange-400/20 to-sky-300/10 blur-2xl" />
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/[0.08] p-6 shadow-2xl backdrop-blur-xl sm:p-8">
+            <div className="mobile-glass-panel relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/[0.08] p-6 shadow-2xl backdrop-blur-xl sm:p-8">
               <div className="mb-8 flex items-center justify-between">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-200">Hem's Institute</p>
@@ -114,7 +114,7 @@ export default async function HomePage() {
                 <span className="grid size-12 place-items-center rounded-2xl bg-brand-orange text-sm font-extrabold text-white shadow-lg">HI</span>
               </div>
               <div className="space-y-3">
-                <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
+                <div className="mobile-glass-row flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
                   <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-orange-300/15 text-lg">🌐</span>
                   <div>
                     <p className="font-semibold text-white">Language Class</p>
@@ -204,7 +204,7 @@ export default async function HomePage() {
               <Card
                 key={cat.id}
                 padded
-                className="group hover:shadow-card transition-shadow duration-300 cursor-pointer"
+                className="mobile-glass-light-card group hover:shadow-card transition-shadow duration-300 cursor-pointer"
               >
                 <ImagePlaceholder
                   category={categoryKey(cat.slug)}
@@ -260,7 +260,7 @@ export default async function HomePage() {
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featured.map((p) => (
-              <Card key={p.id} padded className="hover:shadow-card transition-shadow duration-300">
+              <Card key={p.id} padded className="mobile-glass-light-card hover:shadow-card transition-shadow duration-300">
                 <ImagePlaceholder
                   category={categoryKey(p.slug)}
                   label={p.name}
@@ -274,7 +274,6 @@ export default async function HomePage() {
                     {p.name}
                   </h3>
                 </Link>
-                {p.slug === "english-class" && <span className="inline-flex w-fit items-center rounded-lg border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-bold text-orange-700">Program Unggulan</span>}
                 {p.slug === "english-class" && <span className="inline-flex w-fit items-center rounded-lg border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-bold text-orange-700">Program Unggulan</span>}
                 <p className="mt-3 text-sm text-slate-600 line-clamp-2">
                   {p.description}
