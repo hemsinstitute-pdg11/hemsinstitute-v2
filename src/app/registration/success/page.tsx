@@ -46,7 +46,7 @@ export default async function RegistrationSuccessPage({ searchParams }: { search
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6285376534343";
   const message = encodeURIComponent(
-    `Halo Admin Hem's Institute.\n\nSaya telah melakukan pendaftaran melalui website Hem's Institute.\n\nNomor Registrasi: ${reg.registrationCode}\nNama: ${reg.fullName}\nProgram: ${reg.programName}\nJadwal: Akan dikonfirmasi admin\nMetode Belajar: ${reg.learningMethod}\n\nMohon informasi mengenai proses selanjutnya.\n\nTerima kasih.`,
+    `Halo Admin Hem's Institute.\n\nSaya telah melakukan pendaftaran melalui website Hem's Institute.\n\nNomor Registrasi: ${reg.registrationCode}\nNama: ${reg.fullName}\nProgram: ${reg.programName}\nTempat, Tanggal Lahir: ${reg.birthPlace}, ${reg.birthDate ?? "-"}\nAlamat Domisili: ${reg.domicileAddress}\nEmail: ${reg.email ?? "-"}\nSumber informasi: ${reg.sourceChannel ?? "-"}\nJadwal: Akan dikonfirmasi admin\nMetode Belajar: ${reg.learningMethod}\n\nMohon informasi mengenai proses selanjutnya dan verifikasi pembayaran pendaftaran.\n\nTerima kasih.`,
   );
   const whatsappHref = whatsappNumber ? `https://wa.me/${whatsappNumber}?text=${message}` : null;
 
