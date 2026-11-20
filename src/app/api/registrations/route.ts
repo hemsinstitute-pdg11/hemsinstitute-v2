@@ -133,7 +133,9 @@ export async function POST(request: Request) {
           fullName: data.fullName,
           phone: data.phone,
           email: data.email || null,
-          birthDate: data.birthDate || null,
+          birthDate: data.birthDate,
+          birthPlace: data.birthPlace,
+          domicileAddress: data.domicileAddress,
           educationLevel: data.educationLevel,
           schoolName: data.schoolName || null,
           guardianName: data.guardianName || null,
@@ -179,6 +181,9 @@ export async function POST(request: Request) {
           status: "new",
           learningMethod: data.learningMethod,
           consentAt: data.consent ? new Date() : null,
+          sourceChannel: data.sourceChannel,
+          registrationEmail: data.email || null,
+          registrationPaymentStatus: "pending",
         })
         .returning();
 
