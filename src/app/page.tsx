@@ -14,11 +14,11 @@ export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Beranda",
   description:
-    "Kembangkan keterampilan Anda dan bangun masa depan Anda dengan program bahasa asing, multimedia, dan keterampilan profesional di Hem's Institute Padang. Daftar sekarang.",
+    "Kembangkan kemampuan bahasa dan komputer melalui English Class sebagai program unggulan, serta Japanese, Korean, Mandarin, Arabic, Aplikasi Perkantoran, dan Animasi di Hem's Institute Padang.",
   openGraph: {
     title: "Beranda - Hem's Institute",
     description:
-      "Temukan potensi terbaik Anda melalui program bahasa asing dan keterampilan digital bersama Hem's Institute.",
+      "Temukan program Language Class dan Computer Class bersama Hem's Institute. English Class sebagai program unggulan.",
     type: "website",
   },
 };
@@ -52,13 +52,13 @@ async function getFeaturedPrograms() {
     .from(programs)
     .innerJoin(programCategories, eq(programs.categoryId, programCategories.id))
     .where(and(eq(programs.isActive, true)))
+    .orderBy(programs.displayOrder)
     .limit(6);
 }
 
 const categoryKey = (slug: string) => {
-  if (slug === "bahasa-asing") return "bahasa";
-  if (slug === "multimedia-digital") return "digital";
-  return "profesional";
+  if (slug === "language-class") return "bahasa";
+  return "digital";
 };
 
 export default async function HomePage() {
@@ -118,15 +118,15 @@ export default async function HomePage() {
                 <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
                   <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-orange-300/15 text-lg">🌐</span>
                   <div>
-                    <p className="font-semibold text-white">Bahasa Asing</p>
-                    <p className="mt-1 text-xs text-blue-100">English, Korean, Japanese, dan lainnya</p>
+                    <p className="font-semibold text-white">Language Class</p>
+                    <p className="mt-1 text-xs text-blue-100">English, Japanese, Korean, Mandarin, Arabic</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
                   <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-sky-300/15 text-lg">✦</span>
                   <div>
-                    <p className="font-semibold text-white">Multimedia & Digital</p>
-                    <p className="mt-1 text-xs text-blue-100">Keterampilan kreatif dan teknologi</p>
+                    <p className="font-semibold text-white">Computer Class</p>
+                    <p className="mt-1 text-xs text-blue-100">Aplikasi Perkantoran dan Animasi</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
@@ -165,10 +165,9 @@ export default async function HomePage() {
                 <Layers className="size-5" />
               </div>
               <div>
-                <h3 className="font-semibold text-slate-900">3 Kategori Program</h3>
+                <h3 className="font-semibold text-slate-900">2 Kategori Program</h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Bahasa asing, multimedia &amp; digital, serta keterampilan
-                  profesional.
+                  Language Class dan Computer Class dengan tujuh pilihan program.
                 </p>
               </div>
             </div>
@@ -202,13 +201,13 @@ export default async function HomePage() {
       <section className="grid-surface bg-slate-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 mb-3">Kategori Program Unggulan</h2>
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 mb-3">Program Unggulan Hem\'s Institute</h2>
             <p className="text-slate-600">
-              Pilih program sesuai dengan minat dan tujuan pembelajaran Anda.
+              English Class menjadi program unggulan kami, didukung pilihan Language Class dan Computer Class.
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2">
             {categories.map((cat) => (
               <Card
                 key={cat.id}
@@ -267,7 +266,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featured.map((p) => (
               <Card key={p.id} padded className="hover:shadow-card transition-shadow duration-300">
                 <ImagePlaceholder
