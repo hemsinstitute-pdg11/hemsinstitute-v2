@@ -5,7 +5,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { Clock, Newspaper, ArrowRight, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Berita & Artikel - Hem's Institute",
+  title: "Berita & Artikel",
   description: "Artikel edukasi, tips belajar bahasa, informasi keterampilan digital, dan pengumuman terbaru Hem's Institute.",
 };
 
