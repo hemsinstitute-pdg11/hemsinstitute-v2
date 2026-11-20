@@ -410,32 +410,64 @@ textarea::placeholder {
 /* Soft active-status pulse for the "Terpercaya sejak 2011" indicator. */
 .status-dot {
   position: relative;
+  z-index: 0;
+  display: inline-block;
   flex: none;
-  box-shadow: 0 0 0 0 rgb(242 140 40 / 0.62);
-  animation: status-dot-pulse 1.8s ease-out infinite;
+  border-radius: 9999px;
+  background: #f28c28;
+  box-shadow: 0 0 8px 2px rgb(242 140 40 / 0.55);
+  animation: status-dot-glow 1.5s ease-in-out infinite;
 }
 
-@keyframes status-dot-pulse {
+.status-dot::before,
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border: 2px solid rgb(255 165 65 / 0.9);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: status-dot-wave 1.8s cubic-bezier(0, 0.55, 0.45, 1) infinite;
+}
+
+.status-dot::after {
+  animation-delay: 0.9s;
+}
+
+@keyframes status-dot-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 7px 2px rgb(242 140 40 / 0.48);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 13px 5px rgb(255 166 65 / 0.85);
+    transform: scale(1.18);
+  }
+}
+
+@keyframes status-dot-wave {
   0% {
-    opacity: 1;
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgb(242 140 40 / 0.58);
+    opacity: 0.95;
+    transform: scale(0.7);
   }
-  65% {
-    opacity: 0.88;
-    transform: scale(1.12);
-    box-shadow: 0 0 0 7px rgb(242 140 40 / 0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgb(242 140 40 / 0);
+  75%, 100% {
+    opacity: 0;
+    transform: scale(3.8);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .status-dot {
     animation: none;
-    box-shadow: 0 0 0 3px rgb(242 140 40 / 0.16);
+    box-shadow: 0 0 0 3px rgb(242 140 40 / 0.22), 0 0 9px rgb(242 140 40 / 0.5);
+  }
+
+  .status-dot::before,
+  .status-dot::after {
+    animation: none;
+    display: none;
   }
 }
