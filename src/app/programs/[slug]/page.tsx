@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { PageHero } from "@/components/ui/page-hero";
 import { notFound } from "next/navigation";
 import { db } from "@/db";
 import { programs, programCategories, courseSchedules } from "@/db/schema";
@@ -6,12 +7,13 @@ import { eq, and } from "drizzle-orm";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Clock, Users, MapPin, Play, CheckCircle2 } from "lucide-react";
+import { ChevronRight, Clock, Users, MapPin, CheckCircle2, BookOpen as BookOpenIcon } from "lucide-react";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const [program] = await db
     .select({
       id: programs.id,
@@ -22,7 +24,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     })
     .from(programs)
     .innerJoin(programCategories, eq(programs.categoryId, programCategories.id))
-    .where(eq(programs.slug, params.slug));
+    .where(eq(programs.slug, slug));
 
   if (!program) {
     return { title: "Program Tidak Ditemukan - Hem's Institute" };
@@ -56,6 +58,8 @@ async function getProgram(slug: string) {
     .innerJoin(programCategories, eq(programs.categoryId, programCategories.id))
     .where(eq(programs.slug, slug));
 
+  if (!program) return { program: undefined, schedules: [] };
+
   const schedules = await db
     .select({
       id: courseSchedules.id,
@@ -68,7 +72,7 @@ async function getProgram(slug: string) {
     })
     .from(courseSchedules)
     .where(
-      and(eq(courseSchedules.programId, program!.id), eq(courseSchedules.isActive, true)),
+      and(eq(courseSchedules.programId, program.id), eq(courseSchedules.isActive, true)),
     );
 
   return { program, schedules };
@@ -112,37 +116,10 @@ export default async function ProgramDetailPage({
 
   return (
     <>
-      <section className="relative bg-slate-900/50 overflow-hidden">
-        <div className="absolute inset-0 bg-slate-900/60" />
-        <div className="mx-auto max-w-7xl px-6 relative py-16 md:py-24 text-center">
-          <span className="inline-block mb-4 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1 text-xs font-heading font-bold text-brand-orange tracking-wider">
-            {program.category}
-          </span>
-          <h1 className="font-heading font-bold text-3xl md:text-5xl text-white leading-[1.2] mb-6">
-            {program.name}
-          </h1>
-          <p className="text-slate-200 text-lg max-w-2xl mx-auto leading-relaxed">
-            {program.description}
-          </p>
-          <div className="flex items-center justify-center gap-3 text-sm text-slate-300 mt-8">
-            <span className="flex items-center gap-1.5">
-              <Clock className="size-4" />
-              {program.duration}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Users className="size-4" />
-              {program.targetAudience}
-            </span>
-            <span className="flex items-center gap-1.5">
-                <MapPin className="size-4" />
-                Padang, Sumatera Barat
-            </span>
-          </div>
-        </div>
-      </section>
+      <PageHero eyebrow={program.category} title={program.name} description={program.description} icon={<BookOpenIcon />} />
 
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-4xl px-6">
+      <section className="bg-slate-50 py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <Card padded>
             <CardHeader>
               <ImagePlaceholder
@@ -237,7 +214,7 @@ export default async function ProgramDetailPage({
                     ))}
                   </div>
                 ) : (
-                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-7 text-center">
                     <p className="text-slate-600">
                       Belum ada jadwal yang tersedia untuk program ini.
                       Silakan hubungi admin untuk informasi jadwal terbaru.
@@ -260,7 +237,7 @@ export default async function ProgramDetailPage({
                 <h3 className="font-heading font-bold text-lg text-slate-900 mb-4">Pertanyaan Umum (FAQ)</h3>
                 <div className="space-y-3">
                   {faqs.map((f, i) => (
-                    <div key={i} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <div key={i} className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-orange-200 hover:bg-orange-50/30">
                       <p className="font-semibold text-slate-900 mb-1">Q. {f.q}</p>
                       <p className="text-sm text-slate-600">{f.a}</p>
                     </div>
