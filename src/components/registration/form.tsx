@@ -34,10 +34,13 @@ interface FormState {
   scheduleId: string | null;
   learningMethod: string;
   fullName: string;
+  birthPlace: string;
+  birthDate: string;
+  domicileAddress: string;
   phone: string;
   email: string;
-  birthDate: string;
   educationLevel: string;
+  sourceChannel: string;
   schoolName: string;
   guardianName: string;
   guardianPhone: string;
@@ -50,10 +53,13 @@ const emptyState: FormState = {
   scheduleId: null,
   learningMethod: "",
   fullName: "",
+  birthPlace: "",
+  birthDate: "",
+  domicileAddress: "",
   phone: "",
   email: "",
-  birthDate: "",
   educationLevel: "SMA",
+  sourceChannel: "",
   schoolName: "",
   guardianName: "",
   guardianPhone: "",
@@ -150,7 +156,10 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
           fullName: form.fullName,
           phone: form.phone,
           email: form.email || undefined,
-          birthDate: form.birthDate || undefined,
+          birthPlace: form.birthPlace,
+          birthDate: form.birthDate,
+          domicileAddress: form.domicileAddress,
+          sourceChannel: form.sourceChannel,
           educationLevel: form.educationLevel,
           schoolName: form.schoolName || undefined,
           guardianName: form.guardianName || undefined,
@@ -405,31 +414,23 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="flex items-center gap-1 text-sm font-medium text-slate-700">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => update({ email: e.target.value })}
-                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
-                  placeholder="contoh@email.com"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-slate-700">Tempat Lahir {requiredMarker}</label>
+                  <input id="birthPlace" value={form.birthPlace} onChange={(e) => update({ birthPlace: e.target.value })} required className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" placeholder="Contoh: Padang" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-slate-700">Tanggal Lahir {requiredMarker}</label>
+                  <input id="birthDate" type="date" value={form.birthDate} onChange={(e) => update({ birthDate: e.target.value })} required className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" />
+                </div>
               </div>
-
               <div className="space-y-2">
-                <label className="flex items-center gap-1 text-sm font-medium text-slate-700">
-                  Tanggal Lahir
-                </label>
-                <input
-                  id="birthDate"
-                  type="date"
-                  value={form.birthDate}
-                  onChange={(e) => update({ birthDate: e.target.value })}
-                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
-                />
+                <label className="flex items-center gap-1 text-sm font-medium text-slate-700">Email</label>
+                <input id="email" type="email" value={form.email} onChange={(e) => update({ email: e.target.value })} className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" placeholder="contoh@email.com" />
+              </div>
+              <div className="space-y-2">
+                <label className="flex items-center gap-1 text-sm font-medium text-slate-700">Alamat Domisili {requiredMarker}</label>
+                <textarea id="domicileAddress" value={form.domicileAddress} onChange={(e) => update({ domicileAddress: e.target.value })} required rows={3} className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" placeholder="Alamat lengkap tempat tinggal saat ini" />
               </div>
 
               <div className="space-y-2">
@@ -450,16 +451,22 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
               </div>
 
               <div className="space-y-2">
-                <label className="flex items-center gap-1 text-sm font-medium text-slate-700">
-                  Sekolah / Perguruan Tinggi
-                </label>
-                <input
-                  id="schoolName"
-                  value={form.schoolName}
-                  onChange={(e) => update({ schoolName: e.target.value })}
-                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
-                  placeholder="Contoh: SMP Negeri 1 Padang"
-                />
+                <label className="flex items-center gap-1 text-sm font-medium text-slate-700">Sekolah / Perguruan Tinggi</label>
+                <input id="schoolName" value={form.schoolName} onChange={(e) => update({ schoolName: e.target.value })} className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" placeholder="Contoh: SMP Negeri 1 Padang" />
+              </div>
+              <div className="space-y-2">
+                <label className="flex items-center gap-1 text-sm font-medium text-slate-700">Tahu Hem's Institute dari mana? {requiredMarker}</label>
+                <select value={form.sourceChannel} onChange={(e) => update({ sourceChannel: e.target.value })} required className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100">
+                  <option value="">Pilih sumber informasi</option>
+                  {["Instagram","TikTok","Facebook","Google / Pencarian Internet","Teman atau Keluarga","Sekolah / Kampus","Spanduk / Brosur","Lainnya"].map((source) => <option key={source} value={source}>{source}</option>)}
+                </select>
+              </div>
+              <div className="rounded-2xl border border-orange-200 bg-orange-50 p-5 space-y-2">
+                <h3 className="font-heading font-bold text-slate-900">Pembayaran Pendaftaran</h3>
+                <p className="text-sm text-slate-700">Transfer ke Bank Nagari</p>
+                <p className="text-lg font-bold tracking-wide text-brand-navy">71000220593444</p>
+                <p className="text-sm text-slate-700">a.n. Zulhemdi Hasra</p>
+                <p className="text-xs leading-5 text-slate-600">Selesaikan transfer sesuai informasi biaya pendaftaran dari admin. Status pembayaran akan diverifikasi setelah bukti transfer diterima.</p>
               </div>
 
               {isSchoolLevel && (
@@ -527,19 +534,16 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
               </p>
 
               <div className="grid grid-cols-1 gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:grid-cols-2">
-                <div className="col-span-2 space-y-2">
-                  <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Nama Lengkap</p>
-                  <p className="text-slate-900 font-medium">{form.fullName}</p>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Nomor WhatsApp</p>
-                  <p className="text-slate-900 font-medium">{form.phone}</p>
-                </div>
+                <div className="col-span-2 space-y-2"><p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Nama Lengkap</p><p className="text-slate-900 font-medium">{form.fullName}</p></div>
+                <div className="space-y-2"><p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Tempat, Tanggal Lahir</p><p className="text-slate-900 font-medium">{form.birthPlace}, {form.birthDate || "-"}</p></div>
+                <div className="space-y-2"><p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Nomor WhatsApp</p><p className="text-slate-900 font-medium">{form.phone}</p></div>
+                <div className="col-span-2 space-y-2"><p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Alamat Domisili</p><p className="text-slate-900 font-medium">{form.domicileAddress}</p></div>
                 <div className="space-y-2">
                   <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Email</p>
                   <p className="text-slate-900 font-medium">{form.email || "-"}
                   </p>
                 </div>
+                <div className="space-y-2"><p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Tahu dari mana?</p><p className="text-slate-900 font-medium">{form.sourceChannel}</p></div>
                 <div className="space-y-2">
                   <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Tingkat Pendidikan</p>
                   <p className="text-slate-900 font-medium">{form.educationLevel}</p>
