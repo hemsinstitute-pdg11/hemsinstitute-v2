@@ -85,8 +85,7 @@ export default async function HomePage() {
               </span>
             </h1>
             <p className="mb-9 max-w-xl text-base leading-8 text-blue-100 sm:text-lg">
-              Temukan potensi terbaik Anda melalui program bahasa asing,
-              keterampilan digital, dan pelatihan profesional bersama Hem's Institute.
+              Kembangkan kemampuan Anda melalui Language Class dan Computer Class bersama Hem's Institute. English Class menjadi program unggulan kami.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link
