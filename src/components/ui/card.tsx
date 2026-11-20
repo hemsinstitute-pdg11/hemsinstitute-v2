@@ -6,39 +6,17 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function Card({ className, padded = true, ...props }: CardProps) {
-  return (
-    <div
-      {...props}
-      className={cn(
-        "rounded-2xl bg-white border border-slate-200 shadow-soft",
-        padded ? "p-6" : "p-0",
-        className,
-      )}
-    />
-  );
+  return <div {...props} className={cn("surface-card", padded ? "p-5 sm:p-6" : "p-0", className)} />;
 }
 
 export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 export function CardHeader({ className, ...props }: CardHeaderProps) {
-  return (
-    <div
-      {...props}
-      className={cn("flex flex-col space-y-2 pb-6", className)}
-    />
-  );
+  return <div {...props} className={cn("flex flex-col space-y-2 pb-6", className)} />;
 }
 
 export interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
 export function CardTitle({ className, ...props }: CardTitleProps) {
-  return (
-    <h3
-      {...props}
-      className={cn(
-        "text-xl font-heading font-bold text-slate-900 tracking-tight",
-        className,
-      )}
-    />
-  );
+  return <h3 {...props} className={cn("text-xl font-heading font-bold tracking-tight text-slate-900", className)} />;
 }
 
 export interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -48,10 +26,5 @@ export function CardContent({ className, ...props }: CardContentProps) {
 
 export interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 export function CardFooter({ className, ...props }: CardFooterProps) {
-  return (
-    <div
-      {...props}
-      className={cn("mt-6 flex items-center space-x-2", className)}
-    />
-  );
+  return <div {...props} className={cn("mt-6 flex items-center space-x-2", className)} />;
 }
