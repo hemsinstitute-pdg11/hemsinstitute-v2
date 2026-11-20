@@ -8,7 +8,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { ClipboardCheck, ShieldCheck, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Pendaftaran Online - Hem's Institute",
+  title: "Pendaftaran Online",
   description: "Daftar program pelatihan di Hem's Institute Padang secara online. Isi formulir pendaftaran dan terima nomor registrasi otomatis.",
 };
 
