@@ -75,9 +75,9 @@ export default function ContactPage() {
                 </a>
               </div>
             </Card>
-            <Card className="flex flex-col items-start justify-between gap-5 bg-[#102D53] p-6 text-white sm:flex-row sm:items-center sm:p-8">
-              <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-200">Mulai langkah Anda</p><h2 className="mt-2 font-heading text-xl font-bold">Siap memilih program?</h2><p className="mt-2 text-sm leading-6 text-blue-100">Lihat pilihan kursus dan daftarkan diri secara online.</p></div>
-              <Link href="/registration" className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl bg-brand-orange px-5 text-sm font-bold text-white transition hover:bg-[#D97706] focus-visible:ring-2 focus-visible:ring-white">Daftar Sekarang <ArrowRight className="size-4" /></Link>
+            <Card className="flex flex-col items-start justify-between gap-5 bg-white p-6 text-slate-900 sm:flex-row sm:items-center sm:p-8">
+              <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-600">Mulai langkah Anda</p><h2 className="mt-2 font-heading text-xl font-bold">Siap memilih program?</h2><p className="mt-2 text-sm leading-6 text-slate-600">Lihat pilihan kursus dan daftarkan diri secara online.</p></div>
+              <Link href="/registration" className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl bg-brand-orange px-5 text-sm font-bold text-white transition hover:bg-[#D97706] focus-visible:ring-2 focus-visible:ring-brand-orange">Daftar Sekarang <ArrowRight className="size-4" /></Link>
             </Card>
           </div>
         </div>
