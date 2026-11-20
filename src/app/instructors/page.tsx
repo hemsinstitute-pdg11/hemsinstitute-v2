@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import { Card } from "@/components/ui/card";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFloat } from "@/components/layout/navbar";
 import { GraduationCap, Users, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -82,9 +80,6 @@ export default function InstructorsPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppFloat />
     </>
   );
 }
