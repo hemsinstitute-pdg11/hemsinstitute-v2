@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { PageHero } from "@/components/ui/page-hero";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { BookOpen, Building2, GraduationCap, Users, ShieldCheck } from "lucide-react";
 
@@ -27,22 +28,11 @@ export default function AboutPage() {
 
   return (
     <>
-      <section className="py-16 bg-brand-navy">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <span className="inline-block mb-4 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1 text-xs font-heading font-bold text-brand-orange tracking-wider">
-            Profil Institusi
-          </span>
-          <h1 className="font-heading font-bold text-3xl md:text-5xl text-white leading-[1.2] mb-6">Tentang Hem's Institute</h1>
-          <p className="text-slate-200 text-lg max-w-2xl mx-auto leading-relaxed">
-            Lembaga pendidikan dan pelatihan vokasi terkemuka di Padang,
-            Sumatera Barat yang berdiri sejak 2011.
-          </p>
-        </div>
-      </section>
+      <PageHero eyebrow="Profil Institusi" title="Tentang Hem's Institute" description="Lembaga pendidikan dan pelatihan vokasi di Padang, Sumatera Barat yang berdiri sejak 2011." />
 
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+      <section className="bg-white py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
             <div className="space-y-8">
               <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900">Sejarah Singkat</h2>
               <p className="text-slate-600 leading-relaxed">
@@ -59,7 +49,7 @@ export default function AboutPage() {
                 ini.
               </p>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-soft">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-8">
               <div className="flex items-start gap-3 mb-6">
                 <Building2 className="size-6 text-brand-orange shrink-0 mt-0.5" />
                 <div>
@@ -104,16 +94,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#F1F5F9]">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="bg-slate-50 py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 text-center mb-12">
             Visi dan Misi
           </h2>
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid gap-6 lg:grid-cols-2">
             <Card padded>
               <CardHeader>
                 <div className="flex items-start gap-3">
-                  <div className="rounded-lg bg-amber-50 p-3 text-amber-700">
+                  <div className="rounded-xl bg-orange-50 p-3 text-brand-orange">
                     <GraduationCap className="size-5" />
                   </div>
                   <div>
@@ -135,7 +125,7 @@ export default function AboutPage() {
             <Card padded>
               <CardHeader>
                 <div className="flex items-start gap-3">
-                  <div className="rounded-lg bg-blue-50 p-3 text-blue-700">
+                  <div className="rounded-xl bg-blue-50 p-3 text-brand-navy">
                     <ShieldCheck className="size-5" />
                   </div>
                   <div>
@@ -168,8 +158,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="border-t border-slate-200 bg-white py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div>
               <h2 className="font-heading font-bold text-lg text-slate-900 mb-3">Nilai Kami</h2>
@@ -178,7 +168,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((v, i) => (
               <Card key={i} padded className="p-5">
                 <div className="rounded-lg bg-brand-orange/10 p-2.5 text-brand-orange mb-3">
@@ -192,8 +182,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#F1F5F9]">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="bg-slate-50 py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
               <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900">Fasilitas</h2>
@@ -220,8 +210,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="border-t border-slate-200 bg-white py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-slate-900 text-center">Informasi Hukum</h2>
             <Card padded className="text-center">
