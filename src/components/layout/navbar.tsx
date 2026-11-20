@@ -78,12 +78,12 @@ export function Navbar() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2.5 text-xs font-medium text-slate-600 lg:px-8">
           <div className="flex items-center gap-2">
             <Phone className="size-3.5 text-brand-orange" />
-            <span>Hubungi Admin: <strong className="text-brand-navy">628xxxxxxxxxx</strong></span>
+            <span>Hubungi Admin: <strong className="text-brand-navy">085376534343</strong></span>
           </div>
           <div className="flex items-center gap-3 lg:gap-5">
             <span className="flex items-center gap-1.5 whitespace-nowrap">
               <Clock className="size-3.5" />
-              Senin - Jumat, 08.00 - 16.00 WIB
+              Senin - Minggu, 09.00 - 20.30 WIB
             </span>
             <span aria-hidden="true" className="h-4 w-px bg-slate-300" />
             <span className="flex items-center gap-1.5 whitespace-nowrap">
@@ -124,8 +124,8 @@ export function Navbar() {
               Daftar Sekarang
             </Link>
             <div className="mt-4 grid gap-2 border-t border-slate-100 px-4 pt-4 text-xs text-slate-500 sm:hidden">
-              <span className="flex items-center gap-2"><Phone className="size-3.5 text-brand-orange" /> Admin: 628xxxxxxxxxx</span>
-              <span className="flex items-center gap-2"><Clock className="size-3.5" /> Senin - Jumat, 08.00 - 16.00 WIB</span>
+              <span className="flex items-center gap-2"><Phone className="size-3.5 text-brand-orange" /> Admin: 085376534343</span>
+              <span className="flex items-center gap-2"><Clock className="size-3.5" /> Senin - Minggu, 09.00 - 20.30 WIB</span>
               <span className="flex items-center gap-2"><MapPin className="size-3.5" /> Padang, Sumatera Barat</span>
             </div>
           </div>
@@ -136,7 +136,7 @@ export function Navbar() {
 }
 
 export function WhatsAppFloat() {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6285376534343";
   if (!number) return null;
 
   return (
@@ -156,7 +156,7 @@ export function WhatsAppFloat() {
 export function SocialLinks() {
   return (
     <div className="flex items-center gap-3 text-sm text-slate-600">
-      <a href="#" className="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:bg-brand-orange hover:text-white" aria-label="Instagram">
+      <a href="https://www.instagram.com/hems.institutepadang/" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:bg-brand-orange hover:text-white" aria-label="Instagram">
         Instagram
       </a>
     </div>
