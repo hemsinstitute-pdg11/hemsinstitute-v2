@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, AlertCircle, CheckCircle, Loader2, Mail, Calendar, Users, Smartphone, GraduationCap } from "lucide-react";
+import { ArrowRight, AlertCircle, CheckCircle, Loader2, GraduationCap } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
