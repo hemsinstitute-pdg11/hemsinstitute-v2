@@ -92,7 +92,7 @@ export default async function ProgramDetailPage({
   const priceLabel =
     program.price == null
       ? "Hubungi Admin untuk Informasi"
-      : `Rp ${Number(program.price).toLocaleString("id-ID")}`;
+      : `Rp ${Number(program.price).toLocaleString("id-ID")}${program.slug === "english-class" ? " / bulan" : ""}`;
 
   const faqs = [
     {
