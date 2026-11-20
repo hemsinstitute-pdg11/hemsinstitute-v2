@@ -70,33 +70,79 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="relative bg-brand-navy overflow-hidden">
-        <div className="absolute inset-0 [mask-image:radial-gradient(circle_at_center,black_30%,transparent_70%)] bg-[#0E2E53] opacity-40" />
-        <div className="mx-auto max-w-7xl px-6 relative py-20 md:py-28 text-center">
-          <span className="inline-block mb-6 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-5 py-1.5 text-xs font-heading font-bold text-brand-orange tracking-wider">
-            Terpercaya Sejak 2011
-          </span>
-          <h1 className="font-heading font-bold text-[clamp(2.25rem,4vw,3.5rem)] text-white leading-[1.15] mb-6 text-shadow-soft">
-            Develop Your Skills.<br />
-            Build Your Future.
-          </h1>
-          <p className="text-slate-200 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            Temukan potensi terbaik Anda melalui program bahasa asing dan
-            keterampilan digital bersama Hem's Institute.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/programs"
-              className="rounded-xl bg-brand-orange px-8 py-4 text-lg font-heading font-bold text-white hover:bg-[#D97706] transition-colors shadow-card"
-            >
-              Jelajahi Program
-            </Link>
-            <Link
-              href="/registration"
-              className="rounded-xl border border-white/20 bg-white/10 px-8 py-4 text-lg font-heading font-bold text-white hover:bg-white/20 transition-colors"
-            >
-              Daftar Sekarang
-            </Link>
+      <section className="relative isolate overflow-hidden bg-[#102D53]">
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_15%_20%,rgba(242,140,40,0.22),transparent_34%),radial-gradient(ellipse_at_85%_75%,rgba(96,165,250,0.18),transparent_38%),linear-gradient(135deg,#102D53_0%,#173B70_55%,#0F2B4E_100%)]" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
+          <div className="max-w-2xl">
+            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-300/30 bg-orange-300/10 px-4 py-2 text-xs font-bold tracking-[0.14em] text-orange-200">
+              <span className="size-1.5 rounded-full bg-brand-orange" />
+              TERPERCAYA SEJAK 2011
+            </span>
+            <h1 className="mb-6 font-heading text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-white">
+              Develop Your Skills.
+              <span className="mt-2 block bg-gradient-to-r from-orange-200 via-orange-400 to-amber-300 bg-clip-text text-transparent">
+                Build Your Future.
+              </span>
+            </h1>
+            <p className="mb-9 max-w-xl text-base leading-8 text-blue-100 sm:text-lg">
+              Temukan potensi terbaik Anda melalui program bahasa asing,
+              keterampilan digital, dan pelatihan profesional bersama Hem's Institute.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/programs"
+                className="interactive-lift inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-orange px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-950/20 hover:bg-[#D97706] focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy"
+              >
+                Jelajahi Program <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                href="/registration"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy"
+              >
+                Daftar Sekarang
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-md lg:ml-auto">
+            <div aria-hidden="true" className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-orange-400/20 to-sky-300/10 blur-2xl" />
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/[0.08] p-6 shadow-2xl backdrop-blur-xl sm:p-8">
+              <div className="mb-8 flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-200">Hem's Institute</p>
+                  <p className="mt-2 font-heading text-xl font-bold text-white">Belajar. Berkembang. Berprestasi.</p>
+                </div>
+                <span className="grid size-12 place-items-center rounded-2xl bg-brand-orange text-sm font-extrabold text-white shadow-lg">HI</span>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-orange-300/15 text-lg">🌐</span>
+                  <div>
+                    <p className="font-semibold text-white">Bahasa Asing</p>
+                    <p className="mt-1 text-xs text-blue-100">English, Korean, Japanese, dan lainnya</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-sky-300/15 text-lg">✦</span>
+                  <div>
+                    <p className="font-semibold text-white">Multimedia & Digital</p>
+                    <p className="mt-1 text-xs text-blue-100">Keterampilan kreatif dan teknologi</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-emerald-300/15 text-lg">↗</span>
+                  <div>
+                    <p className="font-semibold text-white">Keterampilan Profesional</p>
+                    <p className="mt-1 text-xs text-blue-100">Kompetensi untuk dunia kerja</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5 text-xs text-blue-100">
+                <span>Padang, Sumatera Barat</span>
+                <span className="font-semibold text-orange-200">Since 2011</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
