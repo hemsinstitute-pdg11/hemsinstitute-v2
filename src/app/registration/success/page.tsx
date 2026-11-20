@@ -25,6 +25,11 @@ async function getRegistration(code: string) {
     fullName: participants.fullName,
     phone: participants.phone,
     email: participants.email,
+    birthPlace: participants.birthPlace,
+    birthDate: participants.birthDate,
+    domicileAddress: participants.domicileAddress,
+    sourceChannel: registrations.sourceChannel,
+    paymentStatus: registrations.registrationPaymentStatus,
     programName: programs.name,
   }).from(registrations)
     .innerJoin(participants, eq(participants.id, registrations.participantId))
@@ -66,6 +71,9 @@ export default async function RegistrationSuccessPage({ searchParams }: { search
               <div className="rounded-xl border border-slate-200 p-4"><p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Tanggal Pendaftaran</p><p className="mt-2 text-sm font-semibold text-slate-900">{formatIdDate(reg.createdAt)}</p></div>
               <div className="rounded-xl border border-slate-200 p-4"><p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Program</p><p className="mt-2 text-sm font-semibold text-slate-900">{reg.programName}</p></div>
               <div className="rounded-xl border border-slate-200 p-4 sm:col-span-2"><p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Metode Belajar</p><p className="mt-2 text-sm font-semibold text-slate-900">{reg.learningMethod}</p></div>
+              <div className="rounded-xl border border-slate-200 p-4"><p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Tempat, Tanggal Lahir</p><p className="mt-2 text-sm font-semibold text-slate-900">{reg.birthPlace}, {reg.birthDate ?? "-"}</p></div>
+              <div className="rounded-xl border border-slate-200 p-4"><p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Status Pembayaran Pendaftaran</p><p className="mt-2 text-sm font-semibold capitalize text-slate-900">{reg.paymentStatus}</p></div>
+              <div className="rounded-xl border border-slate-200 p-4 sm:col-span-2"><p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Alamat Domisili</p><p className="mt-2 text-sm font-semibold text-slate-900">{reg.domicileAddress}</p></div>
             </div>
             <div className="mt-8">
               <h2 className="font-heading text-lg font-bold text-slate-900">Langkah Selanjutnya</h2>
