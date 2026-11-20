@@ -5,8 +5,6 @@ import { registrations, participants, programs } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFloat } from "@/components/layout/navbar";
 import { CheckCircle2, Clock, MapPin, Smartphone } from "lucide-react";
 import { formatIdDate } from "@/lib/date";
 
@@ -178,9 +176,6 @@ export default async function RegistrationSuccessPage({
           </Card>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppFloat />
     </>
   );
 }
