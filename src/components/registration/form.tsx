@@ -417,7 +417,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                 <div className="space-y-2">
                   <label className="flex items-center gap-1 text-sm font-medium text-slate-700">Email Address (untuk konfirmasi)</label>
                   <p className="text-xs text-slate-500">Gunakan email aktif untuk komunikasi dan konfirmasi pendaftaran.</p>
-                  <input type="email" value={form.email} onChange={(e) => update({ email: e.target.value })} className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" placeholder="email aktif" />
+                  <input id="email" type="email" value={form.email} onChange={(e) => update({ email: e.target.value })} className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" placeholder="contoh@email.com" />
                 </div>
               </div>
 
@@ -430,10 +430,6 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                   <label className="text-sm font-medium text-slate-700">Tanggal Lahir {requiredMarker}</label>
                   <input id="birthDate" type="date" value={form.birthDate} onChange={(e) => update({ birthDate: e.target.value })} required className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" />
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label className="flex items-center gap-1 text-sm font-medium text-slate-700">Email</label>
-                <input id="email" type="email" value={form.email} onChange={(e) => update({ email: e.target.value })} className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100" placeholder="contoh@email.com" />
               </div>
               <div className="space-y-2">
                 <label className="flex items-center gap-1 text-sm font-medium text-slate-700">Alamat Domisili {requiredMarker}</label>
