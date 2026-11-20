@@ -182,7 +182,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="grid-surface bg-slate-50 py-14 sm:py-20">
+      <section className="bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
