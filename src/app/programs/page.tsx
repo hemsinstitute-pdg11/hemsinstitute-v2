@@ -1,223 +1,117 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { db } from "@/db";
 import { programCategories, programs } from "@/db/schema";
 import { eq, and, count, ilike, or } from "drizzle-orm";
-import { Card } from "@/components/ui/card";
 import { ProgramCard } from "@/components/programs/program-card";
-import { Search, Filter, BookOpen, Clock, Users } from "lucide-react";
+import { PageHero } from "@/components/ui/page-hero";
+import { Search, SlidersHorizontal, BookOpen, Users, Clock3, GraduationCap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Program & Kursus - Hem's Institute",
-  description:
-    "Jelajahi katalog program pelatihan Hem's Institute: bahasa asing, multimedia & digital, dan keterampilan profesional di Padang.",
+  description: "Jelajahi katalog program pelatihan Hem's Institute: bahasa asing, multimedia & digital, dan keterampilan profesional di Padang.",
 };
 
 export const dynamic = "force-dynamic";
 
-async function getCatalog(params: {
-  categorySlug?: string | null;
-  audience?: string | null;
-  method?: string | null;
-  level?: string | null;
-  q?: string | null;
-}) {
-  const conditions: Array<Parameters<typeof and>[0]> = [
-    eq(programs.isActive, true),
-  ];
+async function getCatalog(params: { categorySlug?: string | null; audience?: string | null; method?: string | null; level?: string | null; q?: string | null }) {
+  const conditions: Array<Parameters<typeof and>[0]> = [eq(programs.isActive, true)];
+  if (params.categorySlug) conditions.push(eq(programCategories.slug, params.categorySlug));
+  if (params.audience) conditions.push(ilike(programs.targetAudience, `%${params.audience}%`));
+  if (params.method) conditions.push(ilike(programs.learningMethod, `%${params.method}%`));
+  if (params.level) conditions.push(ilike(programs.courseLevel, `%${params.level}%`));
+  if (params.q) conditions.push(or(ilike(programs.name, `%${params.q}%`), ilike(programs.description, `%${params.q}%`)));
 
-  if (params.categorySlug) {
-    conditions.push(eq(programCategories.slug, params.categorySlug));
-  }
-
-  if (params.audience) {
-    conditions.push(ilike(programs.targetAudience, `%${params.audience}%`));
-  }
-
-  if (params.method) {
-    conditions.push(ilike(programs.learningMethod, `%${params.method}%`));
-  }
-
-  if (params.level) {
-    conditions.push(ilike(programs.courseLevel, `%${params.level}%`));
-  }
-
-  if (params.q) {
-    conditions.push(
-      or(
-        ilike(programs.name, `%${params.q}%`),
-        ilike(programs.description, `%${params.q}%`),
-      ),
-    );
-  }
-
-  return db
-    .select({
-      id: programs.id,
-      name: programs.name,
-      slug: programs.slug,
-      description: programs.description,
-      category: programCategories.name,
-      categorySlug: programCategories.slug,
-      targetAudience: programs.targetAudience,
-      courseLevel: programs.courseLevel,
-      duration: programs.duration,
-      totalMeetings: programs.totalMeetings,
-      price: programs.price,
-      learningMethod: programs.learningMethod,
-      imageUrl: programs.imageUrl,
-    })
-    .from(programs)
+  return db.select({
+    id: programs.id,
+    name: programs.name,
+    slug: programs.slug,
+    description: programs.description,
+    category: programCategories.name,
+    categorySlug: programCategories.slug,
+    targetAudience: programs.targetAudience,
+    courseLevel: programs.courseLevel,
+    duration: programs.duration,
+    totalMeetings: programs.totalMeetings,
+    price: programs.price,
+    learningMethod: programs.learningMethod,
+    imageUrl: programs.imageUrl,
+  }).from(programs)
     .innerJoin(programCategories, eq(programs.categoryId, programCategories.id))
     .where(and(...conditions));
 }
 
-export default async function ProgramsPage({
-  searchParams,
-}: {
-  searchParams: Promise<{
-    category?: string;
-    audience?: string;
-    method?: string;
-    level?: string;
-    q?: string;
-  }>;
-}) {
+export default async function ProgramsPage({ searchParams }: { searchParams: Promise<{ category?: string; audience?: string; method?: string; level?: string; q?: string }> }) {
   const { category, audience, method, level, q } = await searchParams;
-
-  const categories = await db
-    .select({
-      id: programCategories.id,
-      name: programCategories.name,
-      slug: programCategories.slug,
-      programCount: count(programs.id),
-    })
-    .from(programCategories)
-    .leftJoin(
-      programs,
-      and(eq(programs.categoryId, programCategories.id), eq(programs.isActive, true)),
-    )
-    .groupBy(
-      programCategories.id,
-      programCategories.name,
-      programCategories.slug,
-    );
-
-  const items = await getCatalog({
-    categorySlug: category,
-    audience,
-    method,
-    level,
-    q,
-  });
+  const [categories, items] = await Promise.all([
+    db.select({ id: programCategories.id, name: programCategories.name, slug: programCategories.slug, programCount: count(programs.id) })
+      .from(programCategories)
+      .leftJoin(programs, and(eq(programs.categoryId, programCategories.id), eq(programs.isActive, true)))
+      .groupBy(programCategories.id, programCategories.name, programCategories.slug),
+    getCatalog({ categorySlug: category, audience, method, level, q }),
+  ]);
 
   return (
     <>
-      <section className="py-12 bg-[#F1F5F9] border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-10">
-            <h1 className="font-heading font-bold text-3xl md:text-4xl text-slate-900 mb-3">Program &amp; Kursus</h1>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Temukan program pelatihan yang sesuai dengan minat, usia, dan
-              tujuan pembelajaran Anda. Semua informasi dielola secara dinamis
-              dari database kami.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-soft">
-            <div className="flex flex-col lg:flex-row gap-4 mb-6">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 focus-within:ring-2 focus-within:ring-brand-orange focus-within:border-brand-orange transition-colors">
-                  <Search className="size-4 text-slate-400" />
-                  <input
-                    id="search"
-                    type="search"
-                    placeholder="Cari program kursus..."
-                    className="w-full bg-transparent text-slate-900 outline-none placeholder-slate-400"
-                    defaultValue={q ?? ""}
-                  />
-                </div>
-                <p className="text-xs text-slate-500 mt-1">
-                  Cari nama program atau kata kunci
-                </p>
-              </div>
-              <button className="rounded-xl bg-brand-navy px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#0E2E53] transition-colors">
-                <Filter className="size-4 mr-2" />
-                Filter
-              </button>
+      <PageHero eyebrow="Temukan Kelas yang Tepat" title="Program & Kursus" description="Pilih program pelatihan sesuai minat, usia, dan tujuan pembelajaran Anda. Jelajahi pilihan bahasa asing, multimedia, dan keterampilan profesional." icon={<BookOpen className="size-3.5" />} />
+      <section className="bg-slate-50 py-10 sm:py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <form action="/programs" method="GET" className="rounded-3xl border border-slate-200 bg-white p-5 shadow-card sm:p-7">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="grid size-11 place-items-center rounded-xl bg-orange-50 text-brand-orange"><SlidersHorizontal className="size-5" /></span>
+              <div><h2 className="font-heading text-lg font-bold text-slate-900">Temukan Program</h2><p className="text-xs text-slate-500">Gunakan pencarian dan filter untuk mempersempit pilihan.</p></div>
             </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-slate-100">
-              <div className="flex items-center gap-2 text-sm text-slate-600">
-                <BookOpen className="size-4 text-slate-400" />
-                <span>Kategori</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-600">
-                <Users className="size-4 text-slate-400" />
-                <span>Target Peserta</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-600">
-                <Clock className="size-4 text-slate-400" />
-                <span>Metode Belajar</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-600">
-                <Users className="size-4 text-slate-400" />
-                <span>Tingkat Kursus</span>
-              </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_auto]">
+              <label className="flex min-h-12 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 transition focus-within:border-brand-orange focus-within:ring-2 focus-within:ring-orange-100">
+                <Search className="size-4 shrink-0 text-slate-400" />
+                <input name="q" type="search" placeholder="Cari nama program..." defaultValue={q ?? ""} className="w-full bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400" />
+              </label>
+              <label className="flex min-h-12 flex-col justify-center rounded-xl border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-500 focus-within:border-brand-orange">
+                Kategori
+                <select name="category" defaultValue={category ?? ""} className="w-full bg-transparent text-sm text-slate-800 outline-none">
+                  <option value="">Semua kategori</option>
+                  {categories.map((c) => <option key={c.id} value={c.slug}>{c.name}</option>)}
+                </select>
+              </label>
+              <label className="flex min-h-12 flex-col justify-center rounded-xl border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-500 focus-within:border-brand-orange">
+                Target peserta
+                <select name="audience" defaultValue={audience ?? ""} className="w-full bg-transparent text-sm text-slate-800 outline-none">
+                  <option value="">Semua peserta</option><option value="SD">SD</option><option value="SMP">SMP</option><option value="SMA">SMA</option><option value="Umum">Umum</option>
+                </select>
+              </label>
+              <label className="flex min-h-12 flex-col justify-center rounded-xl border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-500 focus-within:border-brand-orange">
+                Metode belajar
+                <select name="method" defaultValue={method ?? ""} className="w-full bg-transparent text-sm text-slate-800 outline-none">
+                  <option value="">Semua metode</option><option value="Offline">Offline</option><option value="Online">Online</option><option value="Hybrid">Hybrid</option>
+                </select>
+              </label>
+              <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-orange px-5 text-sm font-bold text-white shadow-sm transition hover:bg-[#D97706] focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2">Cari <Search className="size-4" /></button>
             </div>
-          </div>
+            <div className="mt-4 flex flex-wrap gap-2 border-t border-slate-100 pt-4">
+              {categories.map((c) => (
+                <a key={c.id} href={category === c.slug ? "/programs" : `/programs?category=${encodeURIComponent(c.slug)}`} className={`inline-flex min-h-9 items-center gap-2 rounded-full border px-3 text-xs font-semibold transition ${category === c.slug ? "border-brand-navy bg-blue-50 text-brand-navy" : "border-slate-200 bg-white text-slate-600 hover:border-brand-orange hover:text-brand-orange"}`}>
+                  {c.name}<span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px]">{c.programCount}</span>
+                </a>
+              ))}
+            </div>
+          </form>
         </div>
       </section>
-
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="font-heading font-bold text-xl md:text-2xl text-slate-900 mb-1">
-                Daftar Program ({items.length})
-              </h2>
-              <p className="text-sm text-slate-500">
-                Semua program yang tersedia untuk pendaftaran.
-              </p>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-slate-500">
-              <span className="font-medium text-slate-900">Urutkan:</span>
-              <select className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-slate-900 outline-none focus:ring-2 focus:ring-brand-orange">
-                <option>Terbaru</option>
-                <option>Nama (A-Z)</option>
-              </select>
-            </div>
+      <section className="bg-white py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-orange">Katalog Pelatihan</p><h2 className="mt-2 font-heading text-2xl font-bold text-slate-900 sm:text-3xl">Daftar Program <span className="text-brand-orange">({items.length})</span></h2><p className="mt-2 text-sm text-slate-500">Program aktif yang tersedia untuk pendaftaran.</p></div>
+            <div className="flex flex-wrap gap-3 text-xs text-slate-500"><span className="inline-flex items-center gap-1.5"><Users className="size-3.5" /> Pilihan target peserta</span><span className="inline-flex items-center gap-1.5"><Clock3 className="size-3.5" /> Detail jadwal per program</span></div>
           </div>
-
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {items.map((p) => (
-              <ProgramCard
-                key={p.id}
-                id={p.id}
-                name={p.name}
-                category={p.category}
-                slug={p.slug}
-                description={p.description}
-                targetAudience={p.targetAudience}
-                price={p.price}
-                categoryKey={
-                  p.categorySlug === "bahasa-asing"
-                    ? "bahasa"
-                    : p.categorySlug === "multimedia-digital"
-                    ? "digital"
-                    : "profesional"
-                }
-              />
-            ))}
-          </div>
-
-          {items.length === 0 && (
-            <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-soft">
-              <p className="text-lg text-slate-600 mb-3">
-                Program yang Anda cari tidak ditemukan.
-              </p>
-              <p className="text-sm text-slate-500">
-                Coba ubah kata kunci pencarian atau hapus beberapa filter.
-              </p>
+          {items.length > 0 ? (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {items.map((p) => <ProgramCard key={p.id} id={p.id} name={p.name} category={p.category} slug={p.slug} description={p.description} targetAudience={p.targetAudience} price={p.price} categoryKey={p.categorySlug === "bahasa-asing" ? "bahasa" : p.categorySlug === "multimedia-digital" ? "digital" : "profesional"} />)}
+            </div>
+          ) : (
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 py-16 text-center">
+              <span className="mx-auto grid size-14 place-items-center rounded-2xl bg-white text-brand-navy shadow-soft"><GraduationCap className="size-7" /></span>
+              <h3 className="mt-5 font-heading text-xl font-bold text-slate-900">Program belum ditemukan</h3>
+              <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-600">Coba ubah kata kunci atau filter pencarian untuk melihat program lainnya.</p>
+              <a href="/programs" className="mt-5 inline-flex min-h-10 items-center rounded-xl bg-brand-navy px-4 text-sm font-semibold text-white">Reset Filter</a>
             </div>
           )}
         </div>
