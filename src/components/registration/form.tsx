@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, AlertCircle, CheckCircle, Loader2, Mail, Calendar, Users, Smartphone, GraduationCap } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { registrationSchema, type RegistrationInput, EducationLevels } from "@/lib/validations";
@@ -197,7 +198,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
         <p className="text-slate-600 mb-8">
           Terima kasih, <span className="font-semibold">{submitted.name}</span>. Pendaftaran Anda telah kami terima.
         </p>
-        <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 mb-8 text-left">
+        <div className="mb-8 rounded-2xl border border-blue-100 bg-blue-50 p-6 text-left">
           <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Nomor Registrasi</p>
           <p className="font-heading font-mono font-bold text-brand-navy text-lg">{submitted.code}</p>
         </div>
@@ -205,28 +206,26 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
           Simpan nomor registrasi ini. Admin akan menghubungi Anda melalui
           WhatsApp untuk konfirmasi langkah selanjutnya.
         </p>
-        <Button variant="primary" className="w-full md:w-auto">
-          <a href="/" className="w-full text-center sm:w-auto block">
-            Kembali ke Beranda
-          </a>
-        </Button>
+        <Link href="/" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-brand-navy px-6 text-sm font-bold text-white transition hover:bg-[#0E2E53] focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2">
+          Kembali ke Beranda
+        </Link>
       </Card>
     );
   }
 
   return (
-    <section className="py-8">
-      <div className="mx-auto max-w-2xl">
-        <Card className="mb-8">
-          <div className="flex items-center gap-2 mb-2">
+    <section className="py-2 sm:py-4">
+      <div className="mx-auto max-w-3xl">
+        <Card className="mb-8 p-5 sm:p-8">
+          <div className="mb-6 grid grid-cols-4 gap-2 sm:gap-4">
             {stepperItems.map((item) => (
-              <div key={item.number} className="flex flex-col items-center gap-1 relative">
+              <div key={item.number} className="relative flex min-w-0 flex-col items-center gap-2">
                 {item.number > 1 && (
-                  <span className="absolute -left-3 top-2 h-4 w-px bg-slate-300" />
+                  <span className="absolute -left-1/2 top-4 h-px w-full bg-slate-200" />
                 )}
                 <div
                   className={cn(
-                    "rounded-full flex items-center justify-center size-8 border font-body font-semibold text-sm transition-colors",
+                    "relative z-10 flex size-9 items-center justify-center rounded-full border font-body text-sm font-bold transition-colors sm:size-10",
                     form.step >= item.number
                       ? "bg-brand-navy text-white border-brand-navy"
                       : "bg-white text-slate-500 border-slate-200",
@@ -240,7 +239,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
               </div>
             ))}
           </div>
-          <h1 className="font-heading font-bold text-2xl text-slate-900 mb-8">
+          <h1 className="mb-8 font-heading text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
             Formulir Pendaftaran Online
           </h1>
 
@@ -267,7 +266,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                       }}
                       disabled={submitting}
                       className={cn(
-                        "w-full rounded-xl border p-4 text-left transition-colors hover:bg-slate-50 disabled:opacity-60",
+                        "relative w-full rounded-2xl border p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-soft focus-visible:ring-2 focus-visible:ring-brand-orange disabled:opacity-60",
                         form.programId === p.id
                           ? "bg-amber-50 border-brand-orange"
                           : "border-slate-200 text-slate-700 hover:border-brand-orange/50",
@@ -309,7 +308,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                         }
                         disabled={submitting}
                         className={cn(
-                          "rounded-xl border p-3 text-left transition-colors",
+                          "min-h-16 rounded-2xl border p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-soft focus-visible:ring-2 focus-visible:ring-brand-orange",
                           form.scheduleId === s.id
                             ? "bg-amber-50 border-brand-orange text-slate-900"
                             : "border-slate-200 text-slate-700 hover:border-brand-orange/50 hover:bg-amber-50",
@@ -354,7 +353,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                       onClick={() => update({ learningMethod: method })}
                       disabled={submitting}
                       className={cn(
-                        "rounded-xl border p-3 text-center transition-colors",
+                        "min-h-12 rounded-xl border p-3 text-center font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-soft focus-visible:ring-2 focus-visible:ring-brand-orange",
                         form.learningMethod === method
                           ? "bg-amber-50 border-brand-orange text-slate-900 font-semibold"
                           : "border-slate-200 text-slate-600 hover:border-brand-orange/50",
@@ -387,7 +386,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                     id="fullName"
                     value={form.fullName}
                     onChange={(e) => update({ fullName: e.target.value })}
-                    className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition-colors"
+                    className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
                     required
                   />
                 </div>
@@ -400,7 +399,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                     type="tel"
                     value={form.phone}
                     onChange={(e) => update({ phone: e.target.value.replace(/\s/g, "") })}
-                    className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition-colors"
+                    className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
                     required
                   />
                 </div>
@@ -415,7 +414,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                   type="email"
                   value={form.email}
                   onChange={(e) => update({ email: e.target.value })}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition-colors"
+                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
                   placeholder="contoh@email.com"
                 />
               </div>
@@ -429,7 +428,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                   type="date"
                   value={form.birthDate}
                   onChange={(e) => update({ birthDate: e.target.value })}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition-colors"
+                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
                 />
               </div>
 
@@ -440,7 +439,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                 <select
                   value={form.educationLevel}
                   onChange={(e) => update({ educationLevel: e.target.value })}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition-colors"
+                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
                 >
                   {EducationLevels.map((lvl) => (
                     <option key={lvl} value={lvl}>
@@ -458,7 +457,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                   id="schoolName"
                   value={form.schoolName}
                   onChange={(e) => update({ schoolName: e.target.value })}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition-colors"
+                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
                   placeholder="Contoh: SMP Negeri 1 Padang"
                 />
               </div>
@@ -481,7 +480,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                         id="guardianName"
                         value={form.guardianName}
                         onChange={(e) => update({ guardianName: e.target.value })}
-                        className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition-colors"
+                        className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
                       />
                     </div>
                     <div className="space-y-2">
@@ -493,7 +492,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                         type="tel"
                         value={form.guardianPhone}
                         onChange={(e) => update({ guardianPhone: e.target.value.replace(/\s/g, "") })}
-                        className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition-colors"
+                        className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand-orange focus:bg-white focus:ring-2 focus:ring-orange-100"
                       />
                     </div>
                   </div>
@@ -506,7 +505,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                   type="checkbox"
                   checked={form.consent}
                   onChange={(e) => update({ consent: e.target.checked })}
-                  className="rounded border-slate-300 text-brand-orange focus:ring-brand-orange bg-slate-50"
+                  className="mt-0.5 size-5 shrink-0 rounded border-slate-300 text-brand-orange focus:ring-brand-orange"
                 />
                 <label className="text-sm text-slate-600 leading-relaxed" htmlFor="consent">
                   Saya menyetujui pengolahan data pribadi untuk kebutuhan
@@ -527,7 +526,7 @@ export function RegistrationForm({ programs }: { programs: ProgramOption[] }) {
                 Periksa kembali data Anda sebelum mengirimkan pendaftaran.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5 rounded-xl border border-slate-200 bg-slate-50">
+              <div className="grid grid-cols-1 gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:grid-cols-2">
                 <div className="col-span-2 space-y-2">
                   <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Nama Lengkap</p>
                   <p className="text-slate-900 font-medium">{form.fullName}</p>
