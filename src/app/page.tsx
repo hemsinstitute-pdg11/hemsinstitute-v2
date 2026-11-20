@@ -374,12 +374,12 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="grid-surface bg-[#102D53] py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-6">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-slate-900 mb-6">
             Siap Mengembangkan Keterampilan Anda?
           </h2>
-          <p className="text-slate-300 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-600 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
             Gabunglah dengan ribuan peserta yang telah meningkatkan keterampilan
             bahasa asing, digital, dan profesional bersama kami.
           </p>
