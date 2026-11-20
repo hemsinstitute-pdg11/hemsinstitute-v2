@@ -30,6 +30,7 @@ export function ProgramCard({
   const priceLabel = price == null
     ? "Hubungi Admin untuk Informasi"
     : "Rp " + Number(price).toLocaleString("id-ID");
+  const pricePeriod = slug === "english-class" ? "/ bulan" : "";
 
   return (
     <Card key={id} className={cn("flex h-full flex-col", isActive ? "" : "opacity-60 grayscale")}>
@@ -60,8 +61,8 @@ export function ProgramCard({
         <p className="line-clamp-2 text-sm leading-6 text-slate-600">{description}</p>
         <div className="mt-auto flex flex-col gap-3 border-t border-slate-100 pt-4">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <span className="font-heading text-sm font-bold text-brand-navy">{priceLabel}</span>
-            <span className="text-xs text-slate-500">per program</span>
+            <span className="font-heading text-sm font-bold text-brand-navy">{priceLabel} {pricePeriod}</span>
+            <span className="text-xs text-slate-500">{slug === "english-class" ? "Biaya bulanan" : "Biaya kursus"}</span>
           </div>
           <div className="grid grid-cols-2 gap-2">
             <Link
