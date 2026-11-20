@@ -181,3 +181,79 @@ textarea::placeholder {
     transition-timing-function: cubic-bezier(0.2, 0.75, 0.25, 1);
   }
 }
+
+ 
+/* Custom cursor: subtle navy halo with a warm orange center. */
+.cursor-orbit,
+.cursor-core {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity, width, height;
+}
+
+.cursor-orbit {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgb(23 59 112 / 0.48);
+  border-radius: 9999px;
+  background: rgb(23 59 112 / 0.045);
+  box-shadow: 0 0 0 5px rgb(23 59 112 / 0.035);
+  transition:
+    width 180ms ease,
+    height 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 160ms ease,
+    transform 100ms ease-out;
+}
+
+.cursor-core {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #f28c28;
+  box-shadow: 0 0 12px rgb(242 140 40 / 0.42);
+  transition: opacity 160ms ease, transform 70ms ease-out;
+}
+
+.cursor-orbit[data-hover="true"] {
+  width: 48px;
+  height: 48px;
+  border-color: rgb(242 140 40 / 0.78);
+  background: rgb(242 140 40 / 0.08);
+  box-shadow: 0 0 0 7px rgb(242 140 40 / 0.07);
+}
+
+.cursor-orbit[data-down="true"] {
+  width: 27px;
+  height: 27px;
+  background: rgb(242 140 40 / 0.16);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body,
+  body a,
+  body button,
+  body [role="button"],
+  body summary {
+    cursor: none;
+  }
+
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-orbit,
+  .cursor-core {
+    display: none !important;
+  }
+}
