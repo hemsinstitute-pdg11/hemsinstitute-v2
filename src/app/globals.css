@@ -80,3 +80,38 @@ button, a { touch-action: manipulation; }
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Shared form controls: consistent, accessible and touch-friendly. */
+input:not([type="checkbox]):not([type="radio"]):not([type="range"]),
+select,
+textarea {
+  min-height: 44px;
+  border-radius: 12px;
+  transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):focus,
+select:focus,
+textarea:focus {
+  border-color: #F28C28;
+  box-shadow: 0 0 0 3px rgb(242 140 40 / 0.16);
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+:where(a, button, input, select, textarea, summary) {
+  scroll-margin-block: 6rem;
+}
+
+@media (max-width: 639px) {
+  main > section > div.mx-auto {
+    max-width: 100%;
+  }
+}
